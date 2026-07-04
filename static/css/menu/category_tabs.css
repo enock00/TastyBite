@@ -1,0 +1,42 @@
+.category-tabs{
+
+    display:flex;
+
+    gap:15px;
+
+    overflow-x:auto;
+
+    margin-bottom:45px;
+
+    padding-bottom:10px;
+
+}
+
+.category-tabs a{
+
+    text-decoration:none;
+
+    background:white;
+
+    color:#374151;
+
+    padding:14px 28px;
+
+    border-radius:40px;
+
+    white-space:nowrap;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.06);
+
+    transition:.3s;
+
+}
+
+.category-tabs a:hover,
+.category-tabs a.active{
+
+    background:#F97316;
+
+    color:white;
+
+}

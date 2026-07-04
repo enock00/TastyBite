@@ -1,0 +1,104 @@
+{% load static %}
+
+<section class="special-offers">
+
+    <div class="container">
+
+        <!-- Section Header -->
+
+        <div class="section-header">
+
+            <span class="section-tag">
+                🔥 Limited Time Offers
+            </span>
+
+            <h2 class="section-title">
+                Save More With Today's Deals
+            </h2>
+
+            <p class="section-description">
+                Enjoy exclusive discounts on your favourite meals. Order now
+                before these offers expire.
+            </p>
+
+        </div>
+
+        <div class="offers-grid">
+
+            <!-- Offer 1 -->
+
+            <div class="offer-card offer-orange">
+
+                <div class="offer-content">
+
+                    <span class="discount">
+                        30% OFF
+                    </span>
+
+                    <h3>
+                        Family Pizza Combo
+                    </h3>
+
+                    <p>
+                        Buy any two large pizzas and get a free 1.25L soda.
+                    </p>
+
+                    <a href="{% url 'menu:menu' %}" class="offer-btn">
+
+                        Order Now
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+                <div class="offer-image">
+
+                    <img src="{% static 'images/pizza.jpg' %}" alt="Pizza">
+
+                </div>
+
+            </div>
+
+            <!-- Offer 2 -->
+
+            <div class="offer-card offer-dark">
+
+                <div class="offer-content">
+
+                    <span class="discount">
+                        BUY 1 GET 1
+                    </span>
+
+                    <h3>
+                        Chicken Burger
+                    </h3>
+
+                    <p>
+                        Buy one Chicken Burger and receive another absolutely free.
+                    </p>
+
+                    <a href="{% url 'menu:menu' %}" class="offer-btn light">
+
+                        Grab Offer
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+                <div class="offer-image">
+
+                    <img src="{% static 'images/burger.png' %}" alt="Burger">
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

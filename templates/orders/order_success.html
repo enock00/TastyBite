@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="success-page">
+
+    <div class="container">
+
+        <div class="success-card">
+
+            <h1>🎉 Thank You!</h1>
+
+            <p>
+
+                Your order has been placed successfully.
+
+            </p>
+
+            <h2>
+
+                Order #{{ order.id }}
+
+            </h2>
+
+            <a
+                href="{% url 'menu:menu' %}"
+                class="checkout-btn">
+
+                Back to Home
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

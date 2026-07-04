@@ -1,0 +1,133 @@
+{% load static %}
+
+<div class="food-tabs">
+
+    <button class="tab-btn active"
+            data-tab="description">
+
+        Description
+
+    </button>
+
+    <button class="tab-btn"
+            data-tab="ingredients">
+
+        Ingredients
+
+    </button>
+
+    <button class="tab-btn"
+            data-tab="nutrition">
+
+        Nutrition
+
+    </button>
+
+    <button class="tab-btn"
+            data-tab="reviews">
+
+        Reviews
+
+    </button>
+
+</div>
+
+<div class="tab-content">
+
+    <!-- Description -->
+
+    <div class="tab-pane active"
+         id="description">
+
+        <p>
+
+            {{ food.description }}
+
+        </p>
+
+    </div>
+
+    <!-- Ingredients -->
+
+    <div class="tab-pane"
+         id="ingredients">
+
+        <ul>
+
+            <li>Fresh Tomatoes</li>
+
+            <li>Mozzarella Cheese</li>
+
+            <li>Olive Oil</li>
+
+            <li>Fresh Herbs</li>
+
+            <li>Pepperoni</li>
+
+        </ul>
+
+    </div>
+
+    <!-- Nutrition -->
+
+    <div class="tab-pane"
+         id="nutrition">
+
+        <table>
+
+            <tr>
+
+                <td>Calories</td>
+
+                <td>650 kcal</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Protein</td>
+
+                <td>28g</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Fat</td>
+
+                <td>18g</td>
+
+            </tr>
+
+            <tr>
+
+                <td>Carbohydrates</td>
+
+                <td>54g</td>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+    <!-- Reviews -->
+
+    <div class="tab-pane"
+         id="reviews">
+
+        <h3>
+
+            Customer Reviews
+
+        </h3>
+
+        <p>
+
+            ⭐⭐⭐⭐⭐ 4.9 from 128 reviews
+
+        </p>
+
+    </div>
+
+</div>

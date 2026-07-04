@@ -1,0 +1,152 @@
+{% extends "dashboard/dashboard_base.html" %}
+
+{% block title %}Orders{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-nav">
+
+    <a href="{% url 'dashboard:home' %}" class="nav-link">
+        <i class="fas fa-arrow-left"></i>
+        Dashboard
+    </a>
+
+</div>
+
+<section class="dashboard">
+
+<div class="container">
+
+<h1>Orders Management</h1>
+
+<form method="GET" class="search-form">
+
+    <input
+        type="text"
+        name="search"
+        value="{{ search }}"
+        placeholder="Search customer or phone">
+
+    <select name="status">
+
+        <option value="">All Orders</option>
+
+        <option value="pending"
+            {% if request.GET.status == "pending" %}selected{% endif %}>
+            Pending
+        </option>
+
+        <option value="confirmed"
+            {% if request.GET.status == "confirmed" %}selected{% endif %}>
+            Confirmed
+        </option>
+
+        <option value="preparing"
+            {% if request.GET.status == "preparing" %}selected{% endif %}>
+            Preparing
+        </option>
+
+        <option value="ready"
+            {% if request.GET.status == "ready" %}selected{% endif %}>
+            Ready
+        </option>
+
+        <option value="delivered"
+            {% if request.GET.status == "delivered" %}selected{% endif %}>
+            Delivered
+        </option>
+
+        <option value="cancelled"
+            {% if request.GET.status == "cancelled" %}selected{% endif %}>
+            Cancelled
+        </option>
+
+    </select>
+
+    <button type="submit">
+        <i class="fas fa-search"></i>
+        Search
+    </button>
+
+</form>
+
+<table class="orders-table">
+
+<thead>
+
+<tr>
+
+<th>#</th>
+<th>Customer</th>
+<th>Phone</th>
+<th>Status</th>
+<th>Total</th>
+<th>Date</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for order in orders %}
+
+<tr>
+
+<td>{{ order.id }}</td>
+
+<td>{{ order.customer_name }}</td>
+
+<td>{{ order.phone }}</td>
+
+<td>
+
+<span class="status {{ order.status }}">
+
+{{ order.status }}
+
+</span>
+
+</td>
+
+<td>KSh {{ order.total_price }}</td>
+
+<td>{{ order.created_at|date:"d M Y" }}</td>
+
+<td>
+
+<a href="{% url 'dashboard:order_detail' order.id %}"
+class="view-btn">
+
+View
+
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="7">
+
+No orders found.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+{% endblock %}

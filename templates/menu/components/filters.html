@@ -1,0 +1,58 @@
+<div class="menu-toolbar">
+
+    <!-- Left Side -->
+
+    <div class="toolbar-left">
+
+        <!-- Sort -->
+
+        <form method="GET">
+
+            <!-- Preserve existing filters -->
+
+            <input type="hidden" name="search" value="{{ request.GET.search }}">
+            <input type="hidden" name="category" value="{{ request.GET.category }}">
+
+            <select name="sort" onchange="this.form.submit()">
+
+                <option value="">Sort By</option>
+
+                <option value="popular"
+                    {% if request.GET.sort == "popular" %}selected{% endif %}>
+                    Most Popular
+                </option>
+
+                <option value="newest"
+                    {% if request.GET.sort == "newest" %}selected{% endif %}>
+                    Newest
+                </option>
+
+                <option value="price"
+                    {% if request.GET.sort == "price" %}selected{% endif %}>
+                    Price: Low to High
+                </option>
+
+                <option value="-price"
+                    {% if request.GET.sort == "-price" %}selected{% endif %}>
+                    Price: High to Low
+                </option>
+
+            </select>
+
+        </form>
+
+    </div>
+
+    <!-- Right Side -->
+
+    <div class="toolbar-right">
+
+        <span>
+
+            {{ page_obj.paginator.count }} meals available
+
+        </span>
+
+    </div>
+
+</div>

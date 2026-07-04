@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Our Menu | TastyBite
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/menu/menu.css' %}">
+<link rel="stylesheet" href="{% static 'css/menu/food_grid.css' %}">
+<link rel="stylesheet" href="{% static 'css/menu/food_card.css' %}">
+<link rel="stylesheet" href="{% static 'css/menu/search_bar.css' %}">
+<link rel="stylesheet" href="{% static 'css/menu/category_tabs.css' %}">
+{% endblock %}
+
+{% block content %}
+
+{% include "partials/navbar.html" %}
+
+<section class="menu-page">
+
+    <div class="container">
+
+        {% include "menu/components/search_bar.html" %}
+
+        {% include "menu/components/category_tabs.html" %}
+
+        {% include "menu/components/food_grid.html" %}
+
+    </div>
+
+</section>
+
+{% include "partials/footer.html" %}
+
+{% endblock %}

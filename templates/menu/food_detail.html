@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+
+{{ food.name }} | TastyBite
+
+{% endblock %}
+
+{% block extra_css %}
+
+<link rel="stylesheet" href="{% static 'css/menu/food_detail.css' %}">
+<link rel="stylesheet" href="{% static 'css/menu/food_card.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+{% include "partials/navbar.html" %}
+
+<section class="food-detail">
+
+<div class="container">
+
+<div class="breadcrumb">
+
+<a href="/">Home</a>
+
+<span>/</span>
+
+<a href="{% url 'menu:menu' %}">Menu</a>
+
+<span>/</span>
+
+<span>{{ food.name }}</span>
+
+</div>
+
+<div class="food-wrapper">
+
+<div class="food-image">
+
+<img src="{{ food.image.url }}" alt="{{ food.name }}">
+
+</div>
+
+<div class="food-info">
+
+<span class="food-category">
+
+{{ food.category.name }}
+
+</span>
+
+<h1>
+
+{{ food.name }}
+
+</h1>
+
+<div class="food-rating">
+
+★★★★★
+
+<span>(4.9 • 128 Reviews)</span>
+
+</div>
+
+<div class="food-price">
+
+KSh {{ food.price }}
+
+</div>
+
+<p>
+
+{{ food.description }}
+
+</p>
+
+<div class="food-meta">
+
+<div>
+
+<i class="fa-solid fa-clock"></i>
+
+25-30 mins
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-fire"></i>
+
+Best Seller
+
+</div>
+
+<div>
+
+<i class="fa-solid fa-truck-fast"></i>
+
+Fast Delivery
+
+</div>
+
+</div>
+
+<div class="quantity-selector">
+
+<button>-</button>
+
+<input type="number" value="1" min="1">
+
+<button>+</button>
+
+</div>
+
+<div class="food-actions">
+
+<a href="{% url 'menu:add_to_cart' food.id %}"
+
+class="btn-primary">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+Add To Cart
+
+</a>
+
+<button class="btn-secondary">
+
+<i class="fa-regular fa-heart"></i>
+
+Wishlist
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+{% include "menu/components/food_tabs.html" %}
+
+</div>
+
+</section>
+
+<section class="related-foods">
+
+<div class="container">
+
+<div class="section-header">
+
+<h2>
+
+You May Also Like
+
+</h2>
+
+</div>
+
+<div class="food-grid">
+
+{% for food in related_foods %}
+
+{% include "menu/components/food_card.html" %}
+
+{% endfor %}
+
+</div>
+
+</div>
+
+</section>
+
+{% include "partials/footer.html" %}
+
+{% endblock %}
+
+{% block extra_js %}
+
+<script src="{% static 'js/food_detail.js' %}"></script>
+
+{% endblock %}

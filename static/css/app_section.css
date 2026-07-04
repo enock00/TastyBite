@@ -1,0 +1,186 @@
+.app-section{
+
+    padding:120px 0;
+
+    background:#fff8f2;
+
+}
+
+.app-container{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:80px;
+
+    align-items:center;
+
+}
+
+.app-features{
+
+    margin:40px 0;
+
+}
+
+.feature{
+
+    display:flex;
+
+    gap:20px;
+
+    align-items:flex-start;
+
+    margin-bottom:25px;
+
+}
+
+.feature i{
+
+    width:60px;
+
+    height:60px;
+
+    background:var(--primary);
+
+    color:white;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:22px;
+
+}
+
+.download-buttons{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin-top:40px;
+
+}
+
+.store-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:18px 28px;
+
+    background:#1E293B;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:18px;
+
+    transition:.35s;
+
+}
+
+.store-btn:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.store-btn i{
+
+    font-size:34px;
+
+}
+
+.app-image{
+
+    position:relative;
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.phone-background{
+
+    width:420px;
+
+    height:420px;
+
+    background:linear-gradient(135deg,#F97316,#FDBA74);
+
+    border-radius:50%;
+
+    position:absolute;
+
+    top:40px;
+
+    filter:blur(20px);
+
+    opacity:.3;
+
+}
+
+.app-image img{
+
+    width:320px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+.order-card,
+.rating-card{
+
+    position:absolute;
+
+    background:white;
+
+    padding:18px 22px;
+
+    border-radius:18px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    z-index:3;
+
+}
+
+.order-card{
+
+    top:50px;
+
+    left:0;
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:center;
+
+}
+
+.rating-card{
+
+    bottom:50px;
+
+    right:0;
+
+    text-align:center;
+
+}

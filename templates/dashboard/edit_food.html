@@ -1,0 +1,61 @@
+{% extends "dashboard/dashboard_base.html" %}
+
+{% block title %}Edit Food{% endblock %}
+
+{% block content %}
+
+<section class="dashboard">
+
+<div class="container">
+
+<div class="dashboard-header">
+
+<div>
+
+<h1>Edit {{ food.name }}</h1>
+
+<p>Update menu information.</p>
+
+</div>
+
+<a
+href="{% url 'dashboard:menu' %}"
+class="nav-link">
+
+<i class="fas fa-arrow-left"></i>
+
+Back
+
+</a>
+
+</div>
+
+<div class="form-card">
+
+<form
+method="POST"
+enctype="multipart/form-data">
+
+{% csrf_token %}
+
+{{ form.as_p }}
+
+<button
+type="submit"
+class="save-btn">
+
+<i class="fas fa-save"></i>
+
+Update Food
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}

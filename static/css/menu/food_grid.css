@@ -1,0 +1,45 @@
+.menu-section{
+    margin-bottom:70px;
+}
+
+.menu-section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.menu-section-title{
+    font-size:2rem;
+    font-weight:700;
+    color:#222;
+}
+
+.menu-section-subtitle{
+    color:#777;
+    margin-top:5px;
+}
+
+.menu-section-link{
+    color:#ff6b35;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.food-row{
+    display:flex;
+    gap:24px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    padding-bottom:15px;
+    scrollbar-width:none;
+}
+
+.food-row::-webkit-scrollbar{
+    display:none;
+}
+
+.empty-category{
+    color:#888;
+    padding:20px;
+}

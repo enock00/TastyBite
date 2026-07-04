@@ -1,0 +1,179 @@
+{% load static %}
+
+<section class="categories-section">
+
+    <div class="container">
+
+        <!-- Section Header -->
+
+        <div class="section-header">
+
+            <span class="section-tag">
+                Browse Categories
+            </span>
+
+            <h2 class="section-title">
+                What would you like to order today?
+            </h2>
+
+            <p class="section-description">
+                Explore our carefully selected categories and discover your next
+                favourite meal.
+            </p>
+
+        </div>
+
+        <!-- Categories Grid -->
+
+        <div class="categories-grid">
+
+            {% for category in categories %}
+
+            <a href="{% url 'menu:category' category.slug %}" class="category-card">
+
+                <div class="category-image">
+
+                    {% if category.image %}
+                        <img src="{{ category.image.url }}"
+                             alt="{{ category.name }}">
+                    {% else %}
+                        <img src="{% static 'images/default-category.png' %}">
+                    {% endif %}
+
+                </div>
+
+                <div class="category-content">
+
+                    <h3>{{ category.name }}</h3>
+
+                    <span>
+
+                        {{ category.food_count }}
+
+                        Items
+
+                    </span>
+
+                </div>
+
+            </a>
+
+            {% empty %}
+
+            <!-- Temporary cards while database is empty -->
+
+            <div class="category-card">
+
+                <div class="category-image">
+
+                    <img src="{% static 'images/pizza.jpg' %}">
+
+                </div>
+
+                <div class="category-content">
+
+                    <h3>Pizza</h3>
+
+                    <span>12 Items</span>
+
+                </div>
+
+            </div>
+
+            <div class="category-card">
+
+                <div class="category-image">
+
+                    <img src="{% static 'images/burger.png' %}">
+
+                </div>
+
+                <div class="category-content">
+
+                    <h3>Burgers</h3>
+
+                    <span>18 Items</span>
+
+                </div>
+
+            </div>
+
+            <div class="category-card">
+
+                <div class="category-image">
+
+                    <img src="{% static 'images/fried-chicken.png' %}">
+
+                </div>
+
+                <div class="category-content">
+
+                    <h3>Chicken</h3>
+
+                    <span>10 Items</span>
+
+                </div>
+
+            </div>
+
+            <div class="category-card">
+
+                <div class="category-image">
+
+                    <img src="{% static 'images/soda.avif' %}">
+
+                </div>
+
+                <div class="category-content">
+
+                    <h3>Drinks</h3>
+
+                    <span>15 Items</span>
+
+                </div>
+
+            </div>
+
+            <div class="category-card">
+
+                <div class="category-image">
+
+                    <img src="{% static 'images/dessert.jpg' %}">
+
+                </div>
+
+                <div class="category-content">
+
+                    <h3>Desserts</h3>
+
+                    <span>9 Items</span>
+
+                </div>
+
+            </div>
+
+            <div class="category-card">
+
+                <div class="category-image">
+
+                    <img src="{% static 'images/salad.jpg' %}">
+
+                </div>
+
+                <div class="category-content">
+
+                    <h3>Salads</h3>
+
+                    <span>8 Items</span>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>

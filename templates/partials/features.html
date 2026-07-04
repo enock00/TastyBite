@@ -1,0 +1,46 @@
+<div class="food-grid">
+
+{% for food in featured_foods %}
+
+<div class="food-card">
+
+    <div class="food-image">
+
+        <img src="{{ food.image.url }}" alt="{{ food.name }}">
+
+        <span class="price">
+            KSh {{ food.price }}
+        </span>
+
+    </div>
+
+    <div class="food-content">
+
+        <div class="food-rating">
+
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+
+        </div>
+
+        <h3>{{ food.name }}</h3>
+
+<a href="{% url 'cart:cart_add' food.id %}" class="food-btn">
+
+    <i class="fas fa-cart-plus"></i>
+
+</a>
+    </div>
+
+</div>
+
+{% empty %}
+
+<p>No featured dishes available.</p>
+
+{% endfor %}
+
+</div>

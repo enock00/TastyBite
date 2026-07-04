@@ -1,0 +1,313 @@
+/* ===========================
+   TASTYBITE MENU PAGE
+=========================== */
+
+:root{
+    --primary:#ff6b35;
+    --primary-dark:#e85a2a;
+    --secondary:#ffb703;
+    --dark:#1f2937;
+    --text:#4b5563;
+    --light:#f8fafc;
+    --white:#ffffff;
+    --border:#ececec;
+    --radius:18px;
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+    --transition:.35s ease;
+}
+
+/* ===========================
+   PAGE
+=========================== */
+
+.menu-page{
+    background:#fafafa;
+    min-height:100vh;
+    padding:40px 0 80px;
+}
+
+.menu-page .container{
+    width:min(1400px,92%);
+    margin:auto;
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.menu-header{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:.5rem;
+    padding:8px 18px;
+    border-radius:999px;
+    background:rgba(255,107,53,.12);
+    color:var(--primary);
+    font-size:.9rem;
+    font-weight:600;
+    margin-bottom:18px;
+}
+
+.menu-header h1{
+    font-size:clamp(2rem,4vw,3.4rem);
+    font-weight:800;
+    color:var(--dark);
+    margin-bottom:15px;
+    line-height:1.15;
+}
+
+.menu-header p{
+    max-width:700px;
+    margin:auto;
+    color:var(--text);
+    font-size:1.05rem;
+    line-height:1.8;
+}
+
+/* ===========================
+   CONTENT SPACING
+=========================== */
+
+.menu-page section{
+    margin-top:40px;
+}
+
+/* ===========================
+   SECTION TITLES
+=========================== */
+
+.menu-section{
+    margin-top:60px;
+}
+
+.menu-section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:22px;
+}
+
+.menu-section-title{
+    font-size:2rem;
+    font-weight:700;
+    color:var(--dark);
+}
+
+.menu-section-link{
+    text-decoration:none;
+    color:var(--primary);
+    font-weight:600;
+    transition:var(--transition);
+}
+
+.menu-section-link:hover{
+    color:var(--primary-dark);
+}
+
+/* ===========================
+   HORIZONTAL FOOD ROW
+=========================== */
+
+.food-row{
+    display:flex;
+    gap:24px;
+    overflow-x:auto;
+    padding-bottom:10px;
+    scroll-behavior:smooth;
+    scrollbar-width:none;
+}
+
+.food-row::-webkit-scrollbar{
+    display:none;
+}
+
+/* ===========================
+   CATEGORY BAR
+=========================== */
+
+.category-wrapper{
+    position:sticky;
+    top:70px;
+    z-index:50;
+    background:#fafafa;
+    padding:12px 0 18px;
+}
+
+/* ===========================
+   FILTERS
+=========================== */
+
+.filters-wrapper{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:25px;
+}
+
+.filter-btn{
+    padding:10px 22px;
+    border-radius:999px;
+    border:1px solid var(--border);
+    background:white;
+    cursor:pointer;
+    font-weight:600;
+    transition:var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active{
+    background:var(--primary);
+    color:white;
+    border-color:var(--primary);
+}
+
+/* ===========================
+   PAGINATION
+=========================== */
+
+.pagination{
+    display:flex;
+    justify-content:center;
+    margin-top:70px;
+}
+
+/* ===========================
+   EMPTY STATE
+=========================== */
+
+.empty-state{
+    text-align:center;
+    padding:80px 20px;
+}
+
+.empty-state img{
+    width:180px;
+    margin-bottom:25px;
+}
+
+.empty-state h3{
+    font-size:1.8rem;
+    color:var(--dark);
+    margin-bottom:10px;
+}
+
+.empty-state p{
+    color:var(--text);
+}
+
+/* ===========================
+   LOADING
+=========================== */
+
+.skeleton{
+    border-radius:var(--radius);
+    background:
+        linear-gradient(
+            90deg,
+            #f2f2f2 25%,
+            #e8e8e8 37%,
+            #f2f2f2 63%
+        );
+    background-size:400% 100%;
+    animation:skeleton 1.4s infinite;
+}
+
+@keyframes skeleton{
+
+    0%{
+        background-position:100% 0;
+    }
+
+    100%{
+        background-position:-100% 0;
+    }
+
+}
+
+/* ===========================
+   FADE ANIMATION
+=========================== */
+
+.fade-up{
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeUp .8s forwards;
+}
+
+@keyframes fadeUp{
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+    .menu-header{
+        margin-bottom:35px;
+    }
+
+    .menu-section-title{
+        font-size:1.6rem;
+    }
+
+    .food-row{
+        gap:18px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .menu-page{
+        padding-top:20px;
+    }
+
+    .menu-header h1{
+        font-size:2rem;
+    }
+
+    .menu-header p{
+        font-size:.95rem;
+    }
+
+    .menu-section-header{
+        margin-bottom:18px;
+    }
+
+    .menu-section-title{
+        font-size:1.35rem;
+    }
+
+}
+
+@media(max-width:480px){
+
+    .menu-page .container{
+        width:94%;
+    }
+
+    .section-tag{
+        font-size:.8rem;
+    }
+
+    .menu-header h1{
+        font-size:1.8rem;
+    }
+
+    .food-row{
+        gap:14px;
+    }
+
+}

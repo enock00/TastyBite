@@ -1,0 +1,184 @@
+{% load static %}
+
+<section class="popular-dishes">
+
+    <div class="container">
+
+        <!-- ===================== -->
+        <!-- SECTION HEADER -->
+        <!-- ===================== -->
+
+        <div class="section-header">
+
+            <span class="section-tag">
+                🍽 Popular Menu
+            </span>
+
+            <h2 class="section-title">
+                Customer Favorites
+            </h2>
+
+            <p class="section-description">
+                Explore our most loved meals, freshly prepared using premium
+                ingredients and delivered hot to your doorstep.
+            </p>
+
+        </div>
+
+        <!-- ===================== -->
+        <!-- FOOD GRID -->
+        <!-- ===================== -->
+
+        <div class="food-grid">
+
+            {% for food in featured_foods %}
+
+            <article class="food-card">
+
+                <!-- Badge -->
+
+                {% if food.is_featured %}
+                <span class="food-badge">
+                    🔥 Best Seller
+                </span>
+                {% endif %}
+
+                <!-- Wishlist -->
+
+                <button class="wishlist-btn">
+
+                    <i class="fa-regular fa-heart"></i>
+
+                </button>
+
+                <!-- Image -->
+
+                <div class="food-image">
+
+                    <a href="{% url 'menu:food_detail' food.slug %}">
+
+                        <img src="{{ food.image.url }}"
+                             alt="{{ food.name }}">
+
+                    </a>
+
+                </div>
+
+                <!-- Content -->
+
+                <div class="food-content">
+
+                    <span class="food-category">
+
+                        {{ food.category.name }}
+
+                    </span>
+
+                    <h3>
+
+                        <a href="{% url 'menu:food_detail' food.slug %}">
+
+                            {{ food.name }}
+
+                        </a>
+
+                    </h3>
+
+                    <p>
+
+                        {{ food.description|truncatewords:15 }}
+
+                    </p>
+
+                    <!-- Rating -->
+
+                    <div class="food-rating">
+
+                        <div class="stars">
+
+                            ★★★★★
+
+                        </div>
+
+                        <span>
+
+                            ({{ food.review_count|default:"24" }})
+
+                        </span>
+
+                    </div>
+
+                    <!-- Footer -->
+
+                    <div class="food-footer">
+
+                        <div class="price">
+
+                            KSh {{ food.price }}
+
+                        </div>
+
+                        <div class="food-actions">
+
+                            <a href="{% url 'menu:food_detail' food.slug %}"
+
+                               class="quick-view">
+
+                                <i class="fa-regular fa-eye"></i>
+
+                            </a>
+
+                            <a href="{% url 'menu:add_to_cart' food.id %}" class="add-cart">
+                                <i class="fa-solid fa-cart-plus"></i>
+                                Add
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            {% empty %}
+
+            <!-- Fallback Cards -->
+
+            <div class="empty-foods">
+
+                <img src="{% static 'images/empty-menu.svg' %}" alt="">
+
+                <h3>No Featured Meals Yet</h3>
+
+                <p>
+                    Check back soon for our chef's favourites.
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <!-- ===================== -->
+        <!-- BUTTON -->
+        <!-- ===================== -->
+
+        <div class="section-footer">
+
+            <a href="{% url 'menu:menu' %}"
+
+               class="view-menu-btn">
+
+                View Full Menu
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>

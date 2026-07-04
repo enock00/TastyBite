@@ -1,0 +1,165 @@
+{% load static %}
+
+<section class="how-it-works">
+
+    <div class="container">
+
+        <!-- Section Header -->
+
+        <div class="section-header">
+
+            <span class="section-tag">
+                Simple Process
+            </span>
+
+            <h2 class="section-title">
+                Get Your Favorite Meal In Just 3 Easy Steps
+            </h2>
+
+            <p class="section-description">
+                Ordering delicious food has never been easier. From browsing the menu
+                to enjoying your meal, we've made every step quick and effortless.
+            </p>
+
+        </div>
+
+        <!-- Timeline -->
+
+        <div class="steps-wrapper">
+
+            <!-- Step 1 -->
+
+            <div class="step-card">
+
+                <span class="step-badge">Step 1</span>
+
+                <div class="step-icon">
+
+                    <i class="fa-solid fa-utensils"></i>
+
+                </div>
+
+                <h3>Browse Our Menu</h3>
+
+                <p>
+                    Explore a wide variety of freshly prepared meals,
+                    drinks and desserts crafted by our experienced chefs.
+                </p>
+
+                <a href="{% url 'menu:menu' %}" class="step-link">
+
+                    View Menu
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+            <!-- Connector -->
+
+            <div class="step-line">
+
+                <div class="line"></div>
+
+                <div class="circle"></div>
+
+            </div>
+
+            <!-- Step 2 -->
+
+            <div class="step-card active">
+
+                <span class="step-badge">Step 2</span>
+
+                <div class="step-icon">
+
+                    <i class="fa-solid fa-cart-shopping"></i>
+
+                </div>
+
+                <h3>Add To Cart</h3>
+
+                <p>
+                    Customize your order, choose quantities,
+                    and securely checkout in just a few clicks.
+                </p>
+
+                <a href="{% url 'cart:cart_detail' %}" class="step-link">
+
+                    Go To Cart
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+            <!-- Connector -->
+
+            <div class="step-line">
+
+                <div class="line"></div>
+
+                <div class="circle"></div>
+
+            </div>
+
+            <!-- Step 3 -->
+
+            <div class="step-card">
+
+                <span class="step-badge">Step 3</span>
+
+                <div class="step-icon">
+
+                    <i class="fa-solid fa-motorcycle"></i>
+
+                </div>
+
+                <h3>Fast Delivery</h3>
+
+                <p>
+                    Relax while we prepare your meal and deliver it
+                    fresh and hot to your doorstep in under 30 minutes.
+                </p>
+
+                <a href="#" class="step-link">
+
+                    Track Order
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Bottom CTA -->
+
+        <div class="how-cta">
+
+            <div>
+
+                <h3>Ready to satisfy your cravings?</h3>
+
+                <p>
+                    Browse hundreds of delicious meals and place your first order today.
+                </p>
+
+            </div>
+
+            <a href="{% url 'menu:menu' %}" class="btn-primary">
+
+                Order Now
+
+                <i class="fa-solid fa-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>

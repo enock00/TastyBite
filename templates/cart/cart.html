@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block content %}
+
+<section class="cart-page">
+
+    <div class="container">
+
+        <h1>Shopping Cart</h1>
+
+        {% if cart %}
+
+            {% for item in cart %}
+
+                {% if item.food %}
+
+                <div class="cart-item">
+
+                    <div class="cart-image">
+                        <img src="{{ item.food.image.url }}" alt="{{ item.food.name }}">
+                    </div>
+
+                    <div class="cart-info">
+
+                        <h3>{{ item.food.name }}</h3>
+
+                        <p>Price: <strong>KSh {{ item.price }}</strong></p>
+
+                    </div>
+
+                    <div class="quantity">
+
+                        <a href="{% url 'cart:cart_decrease' item.food.id %}" class="qty-btn">
+                            <i class="fas fa-minus"></i>
+                        </a>
+
+                        <span>{{ item.quantity }}</span>
+
+                        <a href="{% url 'cart:cart_increase' item.food.id %}" class="qty-btn">
+                            <i class="fas fa-plus"></i>
+                        </a>
+
+                    </div>
+
+                    <div class="item-total">
+
+                        <strong>KSh {{ item.total_price }}</strong>
+
+                    </div>
+
+                    <div class="remove-item">
+
+                        <a href="{% url 'cart:cart_remove' item.food.id %}">
+                            <i class="fas fa-trash"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+                {% endif %}
+
+            {% endfor %}
+
+            <div class="cart-summary">
+
+                <h2>Total</h2>
+
+                <h3>KSh {{ cart.get_total_price }}</h3>
+
+                <div class="cart-buttons">
+
+                    <a href="{% url 'menu:menu' %}" class="continue-btn">
+                        Continue Shopping
+                    </a>
+
+                    <a href="{% url 'orders:checkout' %}" class="checkout-btn">
+                        Proceed to Checkout
+                    </a>
+
+                </div>
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-cart">
+
+                <i class="fas fa-shopping-cart"></i>
+
+                <h2>Your cart is empty</h2>
+
+                <p>Add some delicious meals to get started.</p>
+
+                <a href="{% url 'menu:menu' %}" class="continue-btn">
+                    Browse Menu
+                </a>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% endblock %}

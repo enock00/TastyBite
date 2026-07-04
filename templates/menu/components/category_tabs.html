@@ -1,0 +1,42 @@
+{% load static %}
+
+<div class="category-tabs">
+
+    <a href="{% url 'menu:menu' %}"
+       class="{% if not request.GET.category %}active{% endif %}">
+        🍽 All
+    </a>
+
+    {% for category in categories %}
+
+        <a href="?category={{ category.slug }}"
+           class="{% if request.GET.category == category.slug %}active{% endif %}">
+
+            {% if category.name == "Pizza" %}
+                🍕
+
+            {% elif category.name == "Burger" %}
+                🍔
+
+            {% elif category.name == "Chicken" %}
+                🍗
+
+            {% elif category.name == "Drinks" %}
+                🥤
+
+            {% elif category.name == "Dessert" %}
+                🍰
+
+            {% else %}
+
+                🍽
+
+            {% endif %}
+
+            {{ category.name }}
+
+        </a>
+
+    {% endfor %}
+
+</div>

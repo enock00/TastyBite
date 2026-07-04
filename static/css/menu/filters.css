@@ -1,0 +1,43 @@
+.menu-toolbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:40px 0;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+}
+
+.menu-toolbar select{
+
+    padding:14px 20px;
+
+    border:1px solid #E5E7EB;
+
+    border-radius:14px;
+
+    background:white;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    outline:none;
+
+    min-width:220px;
+
+}
+
+.toolbar-right{
+
+    color:#64748B;
+
+    font-weight:500;
+
+}

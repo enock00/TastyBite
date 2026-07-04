@@ -1,0 +1,57 @@
+{% extends "dashboard/dashboard_base.html" %}
+
+{% block title %}Delete Food{% endblock %}
+
+{% block content %}
+
+<section class="dashboard">
+
+<div class="container">
+
+<div class="form-card">
+
+<h1>Delete Food</h1>
+
+<p>
+
+Are you sure you want to delete
+
+<strong>
+
+{{ food.name }}
+
+</strong>?
+
+</p>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<button
+type="submit"
+class="delete-btn">
+
+<i class="fas fa-trash"></i>
+
+Yes, Delete
+
+</button>
+
+<a
+href="{% url 'dashboard:menu' %}"
+class="edit-btn">
+
+Cancel
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+            TastyBite | Delicious Food Delivered Fast
+        {% endblock %}
+    </title>
+
+    <meta name="description"
+          content="Order delicious meals online from TastyBite. Fresh food, fast delivery, and secure online ordering.">
+
+    <meta name="theme-color" content="#F97316">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- Page Styles -->
+    <link rel="stylesheet" href="{% static 'css/food_detail.css' %}">
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}">
+    <link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app_section.css' %}">
+    <link rel="stylesheet" href="{% static 'css/categories.css' %}">
+    <link rel="stylesheet" href="{% static 'css/how_it_works.css' %}">
+    <link rel="stylesheet" href="{% static 'css/testimonials.css' %}">
+    <link rel="stylesheet" href="{% static 'css/special_offers.css' %}">
+    <link rel="stylesheet" href="{% static 'css/why_choose_us.css' %}">
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hero.css' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- Global Javascript -->
+    <script src="{% static 'js/script.js' %}"></script>
+
+    {% block extra_js %}
+    {% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+{% for category in categories %}
+
+<section class="menu-section">
+
+    <div class="menu-section-header">
+
+        <div>
+
+            <h2 class="menu-section-title">
+                {{ category.name }}
+            </h2>
+
+            <p class="menu-section-subtitle">
+                Freshly prepared by our chefs
+            </p>
+
+        </div>
+
+        <a href="#" class="menu-section-link">
+            View All
+            <i class="fas fa-arrow-right"></i>
+        </a>
+
+    </div>
+
+    <div class="food-row">
+
+        {% for food in category.food_items.all %}
+
+            {% if food.is_available %}
+                {% include "menu/components/food_card.html" %}
+            {% endif %}
+
+        {% empty %}
+
+            <p class="empty-category">
+                No meals available in this category.
+            </p>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endfor %}

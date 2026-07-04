@@ -1,0 +1,245 @@
+{% load static %}
+
+<section class="hero">
+
+    <div class="hero-container">
+
+        <!-- ========================= -->
+        <!-- LEFT CONTENT -->
+        <!-- ========================= -->
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                <i class="fa-solid fa-bolt"></i>
+                Fast Delivery • Fresh Ingredients • Best Prices
+            </span>
+
+            <h1>
+                Delicious Food
+                <span>Delivered</span>
+                Right To Your Doorstep
+            </h1>
+
+            <p class="hero-description">
+                Discover mouth-watering meals prepared by experienced chefs using
+                fresh ingredients. Order online and enjoy fast delivery anywhere
+                in your city.
+            </p>
+
+            <!-- CTA Buttons -->
+
+            <div class="hero-buttons">
+
+                <a href="{% url 'menu:menu' %}" class="btn-primary">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    Order Now
+                </a>
+
+                <a href="{% url 'menu:menu' %}" class="btn-secondary">
+                    <i class="fa-solid fa-utensils"></i>
+                    Browse Menu
+                </a>
+
+            </div>
+
+            <!-- Trust Statistics -->
+
+            <div class="hero-stats">
+
+                <div class="stat">
+
+                    <h2>15K+</h2>
+
+                    <span>Happy Customers</span>
+
+                </div>
+
+                <div class="stat">
+
+                    <h2>500+</h2>
+
+                    <span>Delicious Meals</span>
+
+                </div>
+
+                <div class="stat">
+
+                    <h2>4.9★</h2>
+
+                    <span>Customer Rating</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- RIGHT CONTENT -->
+        <!-- ========================= -->
+
+        <div class="hero-image">
+
+            <!-- Decorative Background -->
+
+            <div class="hero-circle hero-circle-one"></div>
+            <div class="hero-circle hero-circle-two"></div>
+
+            <!-- Main Food Image -->
+
+            <img src="{% static 'images/food1.jpg' %}"
+                 alt="Delicious Food"
+                 class="main-food">
+
+            <!-- Floating Card 1 -->
+
+            <div class="floating-card card-left">
+
+                <img src="{% static 'images/tasty-burger.webp' %}" alt="Burger">
+
+                <div class="card-info">
+
+                    <small>Popular</small>
+
+                    <h4>Chicken Burger</h4>
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <strong>KSh 550</strong>
+
+                </div>
+
+            </div>
+
+            <!-- Floating Card 2 -->
+
+            <div class="floating-card card-right">
+
+                <img src="{% static 'images/pepperoni-pizza.jpg' %}" alt="Pizza">
+
+                <div class="card-info">
+
+                    <small>Best Seller</small>
+
+                    <h4>Pepperoni Pizza</h4>
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <strong>KSh 850</strong>
+
+                </div>
+
+            </div>
+
+            <!-- Floating Card 3 -->
+
+            <div class="floating-card card-bottom">
+
+                <img src="{% static 'images/soda.avif' %}" alt="Drink">
+
+                <div class="card-info">
+
+                    <small>Refreshing</small>
+
+                    <h4>Blackcurrant Soda</h4>
+
+                    <div class="stars">
+                        ★★★★★
+                    </div>
+
+                    <strong>KSh 150</strong>
+
+                </div>
+
+            </div>
+
+            <!-- Delivery Badge -->
+
+            <div class="delivery-badge">
+
+                <i class="fa-solid fa-motorcycle"></i>
+
+                <div>
+
+                    <strong>30 Minutes</strong>
+
+                    <small>Average Delivery</small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- FEATURES STRIP -->
+    <!-- ========================= -->
+
+    <div class="hero-features">
+
+        <div class="feature-item">
+
+            <i class="fa-solid fa-truck-fast"></i>
+
+            <div>
+
+                <h4>Fast Delivery</h4>
+
+                <p>Delivered in under 30 minutes</p>
+
+            </div>
+
+        </div>
+
+        <div class="feature-item">
+
+            <i class="fa-solid fa-seedling"></i>
+
+            <div>
+
+                <h4>Fresh Ingredients</h4>
+
+                <p>Prepared using quality ingredients</p>
+
+            </div>
+
+        </div>
+
+        <div class="feature-item">
+
+            <i class="fa-solid fa-credit-card"></i>
+
+            <div>
+
+                <h4>Secure Payments</h4>
+
+                <p>Safe & trusted checkout</p>
+
+            </div>
+
+        </div>
+
+        <div class="feature-item">
+
+            <i class="fa-solid fa-headset"></i>
+
+            <div>
+
+                <h4>24/7 Support</h4>
+
+                <p>Always here to help</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

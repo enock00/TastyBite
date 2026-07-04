@@ -1,0 +1,27 @@
+{% load static %}
+
+<div class="search-section">
+
+    <form method="GET" class="search-form">
+
+        <div class="search-input">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                name="q"
+                value="{{ request.GET.q }}"
+                placeholder="Search pizza, burger, drinks...">
+
+        </div>
+
+        <button type="submit">
+
+            Search
+
+        </button>
+
+    </form>
+
+</div>

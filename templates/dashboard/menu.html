@@ -1,0 +1,145 @@
+{% extends "dashboard/dashboard_base.html" %}
+
+{% block title %}Menu Management{% endblock %}
+
+{% block content %}
+
+<section class="dashboard">
+
+<div class="container">
+
+<div class="dashboard-header">
+
+<div>
+<h1>Menu Management</h1>
+<p>Manage restaurant dishes.</p>
+</div>
+
+<a href="{% url 'dashboard:add_food' %}" class="nav-link">
+
+<i class="fas fa-plus"></i>
+
+Add Food
+
+</a>
+
+</div>
+
+<table class="orders-table">
+
+<thead>
+
+<tr>
+
+<th>Image</th>
+
+<th>Name</th>
+
+<th>Category</th>
+
+<th>Price</th>
+
+<th>Available</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for food in foods %}
+
+<tr>
+
+<td>
+
+{% if food.image %}
+    <img src="{{ food.image.url }}"
+         width="70"
+         height="70"
+         style="border-radius:10px;object-fit:cover;">
+{% else %}
+    No Image
+{% endif %}
+
+</td>
+
+<td>
+
+{{ food.name }}
+
+</td>
+
+<td>
+
+{{ food.category.name }}
+
+</td>
+
+<td>
+
+KSh {{ food.price }}
+
+</td>
+
+<td>
+
+{% if food.is_available %}
+
+<span class="available">
+
+{{ food.is_available }}
+
+</span>
+
+{% else %}
+
+<span class="unavailable">
+
+Unavailable
+
+</span>
+
+{% endif %}
+
+</td>
+
+<td>
+
+<a
+href="{% url 'dashboard:edit_food' food.id %}"
+class="edit-btn">
+
+<i class="fas fa-edit"></i>
+
+Edit
+
+</a>
+
+<a
+href="{% url 'dashboard:delete_food' food.id %}"
+class="delete-btn">
+
+<i class="fas fa-trash"></i>
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+{% endblock %}
