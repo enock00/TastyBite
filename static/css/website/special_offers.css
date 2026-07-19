@@ -1,0 +1,401 @@
+/*=========================================
+    SPECIAL OFFERS
+=========================================*/
+
+.special-offers{
+
+    padding:110px 0;
+
+    background:#FFFFFF;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+/* Decorative Background */
+
+.special-offers::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+
+    height:350px;
+
+    border-radius:50%;
+
+    background:rgba(249,115,22,.05);
+
+    top:-120px;
+
+    right:-120px;
+
+}
+
+.special-offers::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:280px;
+
+    height:280px;
+
+    border-radius:50%;
+
+    background:rgba(15,23,42,.04);
+
+    bottom:-120px;
+
+    left:-120px;
+
+}
+
+/*=========================================
+    OFFERS GRID
+=========================================*/
+
+.offers-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(520px,1fr));
+
+    gap:35px;
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+/*=========================================
+    OFFER CARD
+=========================================*/
+
+.offer-card{
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    min-height:330px;
+
+    position:relative;
+
+    transition:.35s;
+
+    box-shadow:
+
+        0 20px 50px rgba(15,23,42,.08);
+
+}
+
+.offer-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+
+        0 35px 65px rgba(15,23,42,.14);
+
+}
+
+/*=========================================
+    CARD BACKGROUNDS
+=========================================*/
+
+.offer-orange{
+
+    background:linear-gradient(
+        135deg,
+        #FF7A18,
+        #FF9A3C
+    );
+
+    color:#fff;
+
+}
+
+.offer-dark{
+
+    background:linear-gradient(
+        135deg,
+        #0F172A,
+        #1E293B
+    );
+
+    color:#fff;
+
+}
+
+/*=========================================
+    CONTENT
+=========================================*/
+
+.offer-content{
+
+    flex:1;
+
+    padding:45px;
+
+}
+
+.discount{
+
+    display:inline-block;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(8px);
+
+    padding:10px 18px;
+
+    border-radius:50px;
+
+    font-size:.9rem;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+    margin-bottom:20px;
+
+}
+
+.offer-content h3{
+
+    font-size:2rem;
+
+    line-height:1.2;
+
+    margin-bottom:18px;
+
+    font-weight:700;
+
+}
+
+.offer-content p{
+
+    line-height:1.8;
+
+    opacity:.92;
+
+    margin-bottom:35px;
+
+    max-width:380px;
+
+}
+
+/*=========================================
+    BUTTON
+=========================================*/
+
+.offer-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    background:#fff;
+
+    color:#FF6B35;
+
+    padding:15px 28px;
+
+    border-radius:50px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.offer-btn:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.offer-btn i{
+
+    transition:.3s;
+
+}
+
+.offer-btn:hover i{
+
+    transform:translateX(5px);
+
+}
+
+/* Dark Version */
+
+.offer-btn.light{
+
+    background:#FF6B35;
+
+    color:#fff;
+
+}
+
+.offer-btn.light:hover{
+
+    background:#EA580C;
+
+}
+
+/*=========================================
+    IMAGE
+=========================================*/
+
+.offer-image{
+
+    width:260px;
+
+    height:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:30px;
+
+}
+
+.offer-image img{
+
+    width:100%;
+
+    max-width:220px;
+
+    transition:.45s;
+
+    filter:drop-shadow(
+        0 20px 25px rgba(0,0,0,.25)
+    );
+
+}
+
+.offer-card:hover .offer-image img{
+
+    transform:scale(1.08) rotate(-4deg);
+
+}
+
+/*=========================================
+    DECORATIVE CIRCLE
+=========================================*/
+
+.offer-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+
+    height:420px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    top:-160px;
+
+    right:-120px;
+
+}
+
+/*=========================================
+    RESPONSIVE
+=========================================*/
+
+@media(max-width:1200px){
+
+    .offers-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .special-offers{
+
+        padding:90px 0;
+
+    }
+
+    .offer-card{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+    .offer-content{
+
+        padding:40px 30px 20px;
+
+    }
+
+    .offer-content p{
+
+        max-width:none;
+
+    }
+
+    .offer-image{
+
+        width:100%;
+
+        padding:20px 30px 40px;
+
+    }
+
+    .offer-image img{
+
+        max-width:180px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .offer-content h3{
+
+        font-size:1.6rem;
+
+    }
+
+    .offer-btn{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+}

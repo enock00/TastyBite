@@ -1,41 +1,46 @@
-{% load static %}
-
 <div class="category-tabs">
 
+    <!-- All Categories -->
+
     <a href="{% url 'menu:menu' %}"
-       class="{% if not request.GET.category %}active{% endif %}">
-        🍽 All
+       class="category-pill {% if not category %}active{% endif %}">
+
+        <i class="fas fa-utensils"></i>
+
+        <span>All</span>
+
     </a>
 
-    {% for category in categories %}
+    <!-- Dynamic Categories -->
 
-        <a href="?category={{ category.slug }}"
-           class="{% if request.GET.category == category.slug %}active{% endif %}">
+    {% for item in categories %}
 
-            {% if category.name == "Pizza" %}
-                🍕
+    <a href="{{ item.get_absolute_url }}"
+       class="category-pill {% if category and category.id == item.id %}active{% endif %}">
 
-            {% elif category.name == "Burger" %}
-                🍔
+        {% if item.icon %}
 
-            {% elif category.name == "Chicken" %}
-                🍗
+            <i class="fas {{ item.icon }}"></i>
 
-            {% elif category.name == "Drinks" %}
-                🥤
+        {% else %}
 
-            {% elif category.name == "Dessert" %}
-                🍰
+            <i class="fas fa-bowl-food"></i>
 
-            {% else %}
+        {% endif %}
 
-                🍽
+        <span>
 
-            {% endif %}
+            {{ item.name }}
 
-            {{ category.name }}
+        </span>
 
-        </a>
+        <small>
+
+            {{ item.food_items.count }}
+
+        </small>
+
+    </a>
 
     {% endfor %}
 

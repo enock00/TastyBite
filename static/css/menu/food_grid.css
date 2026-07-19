@@ -1,45 +1,221 @@
-.menu-section{
-    margin-bottom:70px;
+/*==================================================
+    FOOD GRID SECTION
+====================================================*/
+
+.food-grid-section{
+
+    margin:50px 0 80px;
+
 }
 
-.menu-section-header{
+/*==========================
+    HEADER
+===========================*/
+
+.food-grid-header{
+
     display:flex;
+
     justify-content:space-between;
+
     align-items:center;
-    margin-bottom:25px;
+
+    margin-bottom:35px;
+
 }
 
-.menu-section-title{
+.food-grid-header h2{
+
     font-size:2rem;
+
     font-weight:700;
-    color:#222;
+
+    margin-bottom:8px;
+
+    color:#0F172A;
+
 }
 
-.menu-section-subtitle{
-    color:#777;
-    margin-top:5px;
+.food-grid-header p{
+
+    color:#64748B;
+
 }
 
-.menu-section-link{
-    color:#ff6b35;
-    text-decoration:none;
-    font-weight:600;
+/*==========================
+    GRID
+===========================*/
+
+.food-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+
+    gap:30px;
+
 }
 
-.food-row{
+/*==========================
+    EMPTY
+===========================*/
+
+.empty-menu{
+
+    text-align:center;
+
+    padding:100px 40px;
+
+    background:#fff;
+
+    border-radius:30px;
+
+    box-shadow:
+
+        0 20px 40px rgba(15,23,42,.05);
+
+}
+
+.empty-icon{
+
+    font-size:5rem;
+
+    margin-bottom:20px;
+
+}
+
+.empty-menu h3{
+
+    font-size:2rem;
+
+    margin-bottom:15px;
+
+}
+
+.empty-menu p{
+
+    color:#64748B;
+
+    max-width:550px;
+
+    margin:0 auto 35px;
+
+    line-height:1.8;
+
+}
+
+/*==========================
+    PAGINATION
+===========================*/
+
+.pagination-wrapper{
+
     display:flex;
-    gap:24px;
-    overflow-x:auto;
-    scroll-behavior:smooth;
-    padding-bottom:15px;
-    scrollbar-width:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-top:70px;
+
 }
 
-.food-row::-webkit-scrollbar{
-    display:none;
+.page-btn{
+
+    width:52px;
+
+    height:52px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:16px;
+
+    background:#fff;
+
+    color:#334155;
+
+    text-decoration:none;
+
+    box-shadow:
+
+        0 10px 25px rgba(15,23,42,.05);
+
+    transition:.3s;
+
 }
 
-.empty-category{
-    color:#888;
-    padding:20px;
+.page-btn:hover{
+
+    background:#FF6B35;
+
+    color:#fff;
+
+    transform:translateY(-3px);
+
+}
+
+.page-btn.active{
+
+    background:#FF6B35;
+
+    color:#fff;
+
+}
+
+/*==========================
+    RESPONSIVE
+===========================*/
+
+@media(max-width:992px){
+
+    .food-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .food-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .food-grid-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:15px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .pagination-wrapper{
+
+        gap:8px;
+
+    }
+
+    .page-btn{
+
+        width:45px;
+
+        height:45px;
+
+    }
+
 }

@@ -1,44 +1,50 @@
-.search-section{
+/*==================================================
+    MENU TOOLBAR
+====================================================*/
 
-    margin-bottom:40px;
+.menu-toolbar{
 
-}
+    display:grid;
 
-.search-form{
+    grid-template-columns:2fr 1fr 1fr auto auto;
 
-    display:flex;
-
-    gap:20px;
-
-}
-
-.search-input{
-
-    flex:1;
-
-    background:white;
-
-    border-radius:60px;
-
-    padding:0 25px;
-
-    display:flex;
+    gap:18px;
 
     align-items:center;
 
-    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    margin:50px 0 25px;
 
 }
 
-.search-input i{
+.toolbar-search,
 
-    color:#F97316;
+.toolbar-select{
 
-    margin-right:15px;
+    position:relative;
 
 }
 
-.search-input input{
+.toolbar-search i,
+
+.toolbar-select i{
+
+    position:absolute;
+
+    left:20px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#94A3B8;
+
+    z-index:2;
+
+}
+
+.toolbar-search input,
+
+.toolbar-select select{
 
     width:100%;
 
@@ -48,23 +54,55 @@
 
     outline:none;
 
-    font-size:16px;
+    border-radius:18px;
 
-    background:transparent;
+    background:#fff;
+
+    padding:0 20px 0 55px;
+
+    font-size:.95rem;
+
+    font-family:"Poppins",sans-serif;
+
+    box-shadow:
+
+        0 10px 30px rgba(15,23,42,.05);
+
+    transition:.3s;
 
 }
 
-.search-form button{
+.toolbar-search input:focus,
 
-    padding:0 35px;
+.toolbar-select select:focus{
+
+    box-shadow:
+
+        0 0 0 3px rgba(255,107,53,.18);
+
+}
+
+.toolbar-select select{
+
+    appearance:none;
+
+    cursor:pointer;
+
+}
+
+.toolbar-btn{
+
+    height:60px;
+
+    padding:0 28px;
 
     border:none;
 
-    border-radius:60px;
+    border-radius:18px;
 
-    background:#F97316;
+    background:#FF6B35;
 
-    color:white;
+    color:#fff;
 
     font-weight:600;
 
@@ -74,8 +112,62 @@
 
 }
 
-.search-form button:hover{
+.toolbar-btn:hover{
 
-    background:#ea580c;
+    background:#F45A24;
+
+    transform:translateY(-3px);
+
+}
+
+.toolbar-reset{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    height:60px;
+
+    padding:0 24px;
+
+    border-radius:18px;
+
+    background:#fff;
+
+    color:#334155;
+
+    text-decoration:none;
+
+    box-shadow:
+
+        0 10px 30px rgba(15,23,42,.05);
+
+    transition:.3s;
+
+}
+
+.toolbar-reset:hover{
+
+    background:#FF6B35;
+
+    color:#fff;
+
+}
+
+.results-info{
+
+    margin-bottom:35px;
+
+    color:#64748B;
+
+}
+
+.results-info strong{
+
+    color:#FF6B35;
 
 }

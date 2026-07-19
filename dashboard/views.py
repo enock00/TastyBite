@@ -6,6 +6,8 @@ from django.db.models.functions import TruncDate
 from .forms import FoodItemForm, CategoryForm
 from menu.models import FoodItem, Category
 from orders.models import Order, OrderItem
+from customers.models import Customer
+from django.db.models import Sum, Avg, Count
 
 
 # =====================================================
@@ -362,52 +364,136 @@ def delete_category(request, category_id):
     )
 
 
-# =====================================================
-# Reports
-# =====================================================
-
 def reports(request):
 
-    revenue = (
-        Order.objects
-        .filter(status="delivered")
-        .aggregate(total=Sum("total_price"))
+    delivered_orders = Order.objects.filter(status="delivered")
+
+    # ===============================
+    # Summary Statistics
+    # ===============================
+
+    total_revenue = (
+        delivered_orders.aggregate(
+            total=Sum("total_price")
+        )["total"] or 0
     )
 
     average_order = (
-        Order.objects
-        .filter(status="delivered")
-        .aggregate(avg=Avg("total_price"))
+        delivered_orders.aggregate(
+            avg=Avg("total_price")
+        )["avg"] or 0
     )
 
+    total_orders = Order.objects.count()
+
+    total_customers = Customer.objects.count()
+
+    total_foods = FoodItem.objects.count()
+
+    pending_orders = Order.objects.filter(
+        status="pending"
+    ).count()
+
+    confirmed_orders = Order.objects.filter(
+        status="confirmed"
+    ).count()
+
+    preparing_orders = Order.objects.filter(
+        status="preparing"
+    ).count()
+
+    ready_orders = Order.objects.filter(
+        status="ready"
+    ).count()
+
+    delivered_count = delivered_orders.count()
+
+    cancelled_orders = Order.objects.filter(
+        status="cancelled"
+    ).count()
+
+    # ===============================
+    # Daily Revenue
+    # ===============================
+
     daily_sales = (
-        Order.objects
-        .filter(status="delivered")
+        delivered_orders
         .annotate(day=TruncDate("created_at"))
         .values("day")
         .annotate(total=Sum("total_price"))
         .order_by("day")
     )
 
+    # ===============================
+    # Best Selling Foods
+    # ===============================
+
     best_foods = (
         OrderItem.objects
-        .values("food__name")
-        .annotate(quantity=Sum("quantity"))
-        .order_by("-quantity")[:10]
+        .values(
+            "food__id",
+            "food__name",
+            "food__image",
+            "food__price",
+        )
+        .annotate(
+            quantity_sold=Sum("quantity"),
+            total_orders=Count("order"),
+        )
+        .order_by("-quantity_sold")[:5]
     )
+
+    # ===============================
+    # Category Performance
+    # ===============================
 
     category_sales = (
         OrderItem.objects
-        .values("food__category__name")
-        .annotate(total=Sum("quantity"))
-        .order_by("-total")
+        .values(
+            "food__category__name",
+        )
+        .annotate(
+            quantity=Sum("quantity"),
+        )
+        .order_by("-quantity")
+    )
+
+    # ===============================
+    # Recent Orders
+    # ===============================
+
+    recent_orders = (
+        Order.objects
+        .select_related(
+            "customer",
+            "delivery_zone",
+        )
+        .order_by("-created_at")[:5]
     )
 
     context = {
 
-        "revenue": revenue["total"] or 0,
+        "total_revenue": total_revenue,
 
-        "average_order": average_order["avg"] or 0,
+        "average_order": average_order,
+
+        "total_orders": total_orders,
+
+        "total_customers": total_customers,
+
+        "total_foods": total_foods,
+
+        "pending_orders": pending_orders,
+
+        "confirmed_orders": confirmed_orders,
+
+        "preparing_orders": preparing_orders,
+
+        "ready_orders": ready_orders,
+
+        "delivered_orders": delivered_count,
+
+        "cancelled_orders": cancelled_orders,
 
         "daily_sales": daily_sales,
 
@@ -415,10 +501,12 @@ def reports(request):
 
         "category_sales": category_sales,
 
+        "recent_orders": recent_orders,
+
     }
 
     return render(
         request,
         "dashboard/reports.html",
-        context
+        context,
     )

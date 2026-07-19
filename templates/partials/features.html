@@ -1,46 +1,163 @@
-<div class="food-grid">
+{% load static %}
 
-{% for food in featured_foods %}
+<section class="featured-foods">
 
-<div class="food-card">
+    <div class="container">
 
-    <div class="food-image">
+        <div class="section-header">
 
-        <img src="{{ food.image.url }}" alt="{{ food.name }}">
+            <span class="section-tag">
+                Customer Favorites
+            </span>
 
-        <span class="price">
-            KSh {{ food.price }}
-        </span>
+            <h2 class="section-title">
+                Featured Dishes
+            </h2>
 
-    </div>
-
-    <div class="food-content">
-
-        <div class="food-rating">
-
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
+            <p class="section-description">
+                Freshly prepared by our chefs using premium ingredients and delivered straight to your doorstep.
+            </p>
 
         </div>
 
-        <h3>{{ food.name }}</h3>
+        <div class="food-grid">
 
-<a href="{% url 'cart:cart_add' food.id %}" class="food-btn">
+            {% for food in featured_foods %}
 
-    <i class="fas fa-cart-plus"></i>
+            <article class="food-card">
 
-</a>
+                <div class="food-image">
+
+                    <img src="{{ food.image.url }}" alt="{{ food.name }}">
+
+                    {% if food.discount_percent %}
+                    <span class="discount-badge">
+                        {{ food.discount_percent }}% OFF
+                    </span>
+                    {% endif %}
+
+                    {% if food.is_popular %}
+                    <span class="popular-badge">
+                        🔥 Popular
+                    </span>
+                    {% endif %}
+
+                    {% if food.is_new %}
+                    <span class="new-badge">
+                        New
+                    </span>
+                    {% endif %}
+
+                    <div class="food-overlay">
+
+                        <a href="{{ food.get_absolute_url }}">
+                            View Details
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="food-content">
+
+                    <div class="food-top">
+
+                        <span class="food-category">
+
+                            {{ food.category.name }}
+
+                        </span>
+
+                        <span class="food-rating">
+
+                            ⭐ {{ food.rating }}
+
+                        </span>
+
+                    </div>
+
+                    <h3>
+
+                        {{ food.name }}
+
+                    </h3>
+
+                    <p>
+
+                        {{ food.description|truncatewords:15 }}
+
+                    </p>
+
+                    <div class="food-meta">
+
+                        <span>
+
+                            <i class="fas fa-clock"></i>
+
+                            {{ food.preparation_time }} mins
+
+                        </span>
+
+                        <span>
+
+                            <i class="fas fa-fire"></i>
+
+                            Fresh
+
+                        </span>
+
+                    </div>
+
+                    <div class="food-bottom">
+
+                        <div class="food-price">
+
+                            <span class="current-price">
+
+                                KSh {{ food.price }}
+
+                            </span>
+
+                            {% if food.original_price %}
+
+                            <span class="old-price">
+
+                                KSh {{ food.original_price }}
+
+                            </span>
+
+                            {% endif %}
+
+                        </div>
+
+                        <a href="{% url 'cart:cart_add' food.id %}"
+
+                           class="cart-btn">
+
+                            <i class="fas fa-cart-plus"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            {% empty %}
+
+            <div class="empty-foods">
+
+                <h3>No featured dishes yet</h3>
+
+                <p>Our chefs are preparing something delicious.</p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
     </div>
 
-</div>
-
-{% empty %}
-
-<p>No featured dishes available.</p>
-
-{% endfor %}
-
-</div>
+</section>

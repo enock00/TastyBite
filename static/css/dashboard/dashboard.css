@@ -1,0 +1,303 @@
+/*==================================================
+    TASTYBITE DASHBOARD LAYOUT
+====================================================*/
+
+/*==========================
+    ROOT
+===========================*/
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    margin:0;
+
+    padding:0;
+
+    font-family:'Poppins',sans-serif;
+
+    background:#F7F8FC;
+
+    color:#111827;
+
+    overflow-x:hidden;
+
+}
+
+/*==========================
+    DASHBOARD GRID
+===========================*/
+
+.dashboard-layout{
+
+    display:grid;
+
+    grid-template-columns:280px 1fr;
+
+    min-height:100vh;
+
+    background:#F7F8FC;
+
+}
+
+/*==========================
+    MAIN CONTENT
+===========================*/
+
+.dashboard{
+
+    display:flex;
+
+    flex-direction:column;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+}
+
+/*==========================
+    PAGE CONTENT
+===========================*/
+
+.dashboard-content{
+
+    flex:1;
+
+    padding:2rem;
+
+}
+
+/*==========================
+    SECTIONS
+===========================*/
+
+section{
+
+    margin-bottom:2rem;
+
+}
+
+/*==========================
+    GRID SYSTEM
+===========================*/
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:2rem;
+
+    margin-top:2rem;
+
+}
+
+.dashboard-grid.equal{
+
+    grid-template-columns:1fr 1fr;
+
+}
+
+.dashboard-grid.three{
+
+    grid-template-columns:repeat(3,1fr);
+
+}
+
+.dashboard-grid.four{
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+/*==========================
+    CARD WRAPPER
+===========================*/
+
+.dashboard-card{
+
+    background:#fff;
+
+    border-radius:24px;
+
+    border:1px solid #EEF2F7;
+
+    box-shadow:0 10px 35px rgba(15,23,42,.05);
+
+    overflow:hidden;
+
+}
+
+.dashboard-card-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:1.5rem 2rem;
+
+    border-bottom:1px solid #EEF2F7;
+
+}
+
+.dashboard-card-header h3{
+
+    margin:0;
+
+    font-size:1.25rem;
+
+    font-weight:600;
+
+}
+
+.dashboard-card-body{
+
+    padding:2rem;
+
+}
+
+/*==========================
+    PAGE SPACING
+===========================*/
+
+.page-spacing{
+
+    margin-top:2rem;
+
+}
+
+/*==========================
+    UTILITIES
+===========================*/
+
+.flex{
+
+    display:flex;
+
+}
+
+.flex-between{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.flex-center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.gap-1{
+
+    gap:1rem;
+
+}
+
+.gap-2{
+
+    gap:2rem;
+
+}
+
+.mt-1{
+
+    margin-top:1rem;
+
+}
+
+.mt-2{
+
+    margin-top:2rem;
+
+}
+
+.mb-2{
+
+    margin-bottom:2rem;
+
+}
+
+/*==========================
+    RESPONSIVE
+===========================*/
+
+@media(max-width:1200px){
+
+    .dashboard-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:992px){
+
+    .dashboard-layout{
+
+        grid-template-columns:90px 1fr;
+
+    }
+
+    .dashboard-content{
+
+        padding:1.5rem;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .dashboard-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .dashboard{
+
+        width:100%;
+
+    }
+
+    .dashboard-content{
+
+        padding:1rem;
+
+    }
+
+    .dashboard-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .dashboard-content{
+
+        padding:.75rem;
+
+    }
+
+}

@@ -1,0 +1,391 @@
+/*=========================================
+    FEATURED FOODS
+=========================================*/
+
+.featured-foods{
+
+    padding:110px 0;
+
+    background:#ffffff;
+
+}
+
+/*=========================================
+    GRID
+=========================================*/
+
+.food-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+
+}
+
+/*=========================================
+    CARD
+=========================================*/
+
+.food-card{
+
+    background:#fff;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+    box-shadow:
+
+        0 15px 40px rgba(15,23,42,.07);
+
+    border:1px solid #F1F5F9;
+
+}
+
+.food-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:
+
+        0 30px 60px rgba(15,23,42,.12);
+
+}
+
+/*=========================================
+    IMAGE
+=========================================*/
+
+.food-image{
+
+    position:relative;
+
+    height:260px;
+
+    overflow:hidden;
+
+}
+
+.food-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.food-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+/*=========================================
+    BADGES
+=========================================*/
+
+.discount-badge,
+
+.popular-badge,
+
+.new-badge{
+
+    position:absolute;
+
+    left:18px;
+
+    color:#fff;
+
+    border-radius:30px;
+
+    padding:8px 16px;
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+}
+
+.discount-badge{
+
+    top:18px;
+
+    background:#EF4444;
+
+}
+
+.popular-badge{
+
+    top:60px;
+
+    background:#F97316;
+
+}
+
+.new-badge{
+
+    top:102px;
+
+    background:#10B981;
+
+}
+
+/*=========================================
+    OVERLAY
+=========================================*/
+
+.food-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(15,23,42,.55);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    opacity:0;
+
+    transition:.35s;
+
+}
+
+.food-card:hover .food-overlay{
+
+    opacity:1;
+
+}
+
+.food-overlay a{
+
+    background:#FF6B35;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    padding:14px 28px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+}
+
+/*=========================================
+    CONTENT
+=========================================*/
+
+.food-content{
+
+    padding:28px;
+
+}
+
+.food-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:18px;
+
+}
+
+.food-category{
+
+    background:#FFF4EF;
+
+    color:#FF6B35;
+
+    padding:6px 16px;
+
+    border-radius:50px;
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+}
+
+.food-rating{
+
+    color:#F59E0B;
+
+    font-weight:600;
+
+}
+
+.food-content h3{
+
+    font-size:1.4rem;
+
+    margin-bottom:12px;
+
+    color:#0F172A;
+
+}
+
+.food-content p{
+
+    color:#64748B;
+
+    line-height:1.7;
+
+    margin-bottom:22px;
+
+}
+
+/*=========================================
+    META
+=========================================*/
+
+.food-meta{
+
+    display:flex;
+
+    gap:18px;
+
+    margin-bottom:25px;
+
+    color:#64748B;
+
+    font-size:.9rem;
+
+}
+
+.food-meta span{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+/*=========================================
+    BOTTOM
+=========================================*/
+
+.food-bottom{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.current-price{
+
+    font-size:1.4rem;
+
+    font-weight:700;
+
+    color:#FF6B35;
+
+}
+
+.old-price{
+
+    margin-left:10px;
+
+    color:#94A3B8;
+
+    text-decoration:line-through;
+
+}
+
+.cart-btn{
+
+    width:56px;
+
+    height:56px;
+
+    border-radius:50%;
+
+    background:#FF6B35;
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+.cart-btn:hover{
+
+    transform:scale(1.1);
+
+    background:#EA580C;
+
+}
+
+/*=========================================
+    EMPTY STATE
+=========================================*/
+
+.empty-foods{
+
+    grid-column:1/-1;
+
+    text-align:center;
+
+    padding:80px;
+
+    background:#F8FAFC;
+
+    border-radius:24px;
+
+}
+
+/*=========================================
+    RESPONSIVE
+=========================================*/
+
+@media(max-width:992px){
+
+    .food-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .food-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .food-image{
+
+        height:220px;
+
+    }
+
+}

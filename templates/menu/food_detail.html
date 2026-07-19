@@ -1,18 +1,13 @@
 {% extends "base.html" %}
-
 {% load static %}
 
 {% block title %}
-
 {{ food.name }} | TastyBite
-
 {% endblock %}
 
 {% block extra_css %}
-
 <link rel="stylesheet" href="{% static 'css/menu/food_detail.css' %}">
 <link rel="stylesheet" href="{% static 'css/menu/food_card.css' %}">
-
 {% endblock %}
 
 {% block content %}
@@ -21,159 +16,273 @@
 
 <section class="food-detail">
 
-<div class="container">
+    <div class="container">
 
-<div class="breadcrumb">
+        <!--=========================
+                BREADCRUMB
+        ==========================-->
 
-<a href="/">Home</a>
+        <div class="breadcrumb">
 
-<span>/</span>
+            <a href="{% url 'core:home' %}">Home</a>
 
-<a href="{% url 'menu:menu' %}">Menu</a>
+            <span>/</span>
 
-<span>/</span>
+            <a href="{% url 'menu:menu' %}">Menu</a>
 
-<span>{{ food.name }}</span>
+            <span>/</span>
 
-</div>
+            <a href="{{ food.category.get_absolute_url }}">
 
-<div class="food-wrapper">
+                {{ food.category.name }}
 
-<div class="food-image">
+            </a>
 
-<img src="{{ food.image.url }}" alt="{{ food.name }}">
+            <span>/</span>
 
-</div>
+            <span>{{ food.name }}</span>
 
-<div class="food-info">
+        </div>
 
-<span class="food-category">
+        <!--=========================
+                PRODUCT
+        ==========================-->
 
-{{ food.category.name }}
+        <div class="food-wrapper">
 
-</span>
+            <!-- IMAGE -->
 
-<h1>
+            <div class="food-image">
 
-{{ food.name }}
+                {% if food.has_discount %}
 
-</h1>
+                    <span class="discount-badge">
 
-<div class="food-rating">
+                        {{ food.display_discount }}
 
-★★★★★
+                    </span>
 
-<span>(4.9 • 128 Reviews)</span>
+                {% endif %}
 
-</div>
+                <img src="{{ food.image.url }}"
+                     alt="{{ food.name }}">
 
-<div class="food-price">
+            </div>
 
-KSh {{ food.price }}
+            <!-- INFO -->
 
-</div>
+            <div class="food-info">
 
-<p>
+                <span class="food-category">
 
-{{ food.description }}
+                    {{ food.category.name }}
 
-</p>
+                </span>
 
-<div class="food-meta">
+                <h1>
 
-<div>
+                    {{ food.name }}
 
-<i class="fa-solid fa-clock"></i>
+                </h1>
 
-25-30 mins
+                <div class="food-rating">
 
-</div>
+                    ⭐ {{ food.rating }}
 
-<div>
+                    <span>
 
-<i class="fa-solid fa-fire"></i>
+                        Premium Choice
 
-Best Seller
+                    </span>
 
-</div>
+                </div>
 
-<div>
+                <!-- PRICE -->
 
-<i class="fa-solid fa-truck-fast"></i>
+                <div class="food-price">
 
-Fast Delivery
+                    <span class="current-price">
 
-</div>
+                        KSh {{ food.price }}
 
-</div>
+                    </span>
 
-<div class="quantity-selector">
+                    {% if food.has_discount %}
 
-<button>-</button>
+                    <span class="old-price">
 
-<input type="number" value="1" min="1">
+                        KSh {{ food.original_price }}
 
-<button>+</button>
+                    </span>
 
-</div>
+                    {% endif %}
 
-<div class="food-actions">
+                </div>
 
-<a href="{% url 'menu:add_to_cart' food.id %}"
+                <p class="food-description">
 
-class="btn-primary">
+                    {{ food.description }}
 
-<i class="fa-solid fa-cart-shopping"></i>
+                </p>
 
-Add To Cart
+                <!-- FEATURES -->
 
-</a>
+                <div class="food-meta">
 
-<button class="btn-secondary">
+                    <div>
 
-<i class="fa-regular fa-heart"></i>
+                        <i class="fas fa-clock"></i>
 
-Wishlist
+                        {{ food.preparation_time }} mins
 
-</button>
+                    </div>
 
-</div>
+                    <div>
 
-</div>
+                        <i class="fas fa-fire"></i>
 
-</div>
+                        {{ food.calories }} kcal
 
-{% include "menu/components/food_tabs.html" %}
+                    </div>
 
-</div>
+                    <div>
+
+                        <i class="fas fa-box"></i>
+
+                        {{ food.stock }} Available
+
+                    </div>
+
+                </div>
+
+                <!-- TAGS -->
+
+                <div class="food-tags">
+
+                    {% if food.is_popular %}
+                        <span>🔥 Popular</span>
+                    {% endif %}
+
+                    {% if food.is_new %}
+                        <span>🆕 New</span>
+                    {% endif %}
+
+                    {% if food.is_spicy %}
+                        <span>🌶 Spicy</span>
+                    {% endif %}
+
+                    {% if food.is_vegetarian %}
+                        <span>🥗 Vegetarian</span>
+                    {% endif %}
+
+                    {% if food.is_vegan %}
+                        <span>🌱 Vegan</span>
+                    {% endif %}
+
+                </div>
+
+                <!-- QUANTITY -->
+
+                <div class="quantity-selector">
+
+                    <button type="button">−</button>
+
+                    <input
+                        type="number"
+                        value="1"
+                        min="1">
+
+                    <button type="button">+</button>
+
+                </div>
+
+                <!-- ACTIONS -->
+
+                <div class="food-actions">
+
+                    <a href="{% url 'menu:add_to_cart' food.id %}"
+
+                       class="btn-primary">
+
+                        <i class="fas fa-cart-shopping"></i>
+
+                        Add To Cart
+
+                    </a>
+
+                    <button class="btn-secondary">
+
+                        <i class="far fa-heart"></i>
+
+                        Wishlist
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!--=========================
+                EXTRA DETAILS
+        ==========================-->
+
+        {% include "menu/components/food_tabs.html" %}
+
+    </div>
 
 </section>
 
+<!--=========================
+        RELATED FOODS
+==========================-->
+
 <section class="related-foods">
 
-<div class="container">
+    <div class="container">
 
-<div class="section-header">
+        <div class="section-header">
 
-<h2>
+            <span class="section-tag">
 
-You May Also Like
+                You Might Like
 
-</h2>
+            </span>
 
-</div>
+            <h2>
 
-<div class="food-grid">
+                Similar Dishes
 
-{% for food in related_foods %}
+            </h2>
 
-{% include "menu/components/food_card.html" %}
+            <p>
 
-{% endfor %}
+                Customers who enjoyed this meal also loved these.
 
-</div>
+            </p>
 
-</div>
+        </div>
+
+        <div class="food-grid">
+
+            {% for food in related_foods %}
+
+                {% include "menu/components/food_card.html" %}
+
+            {% empty %}
+
+                <p>
+
+                    No related meals available.
+
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
 
 </section>
 

@@ -1,0 +1,35 @@
+@import url("base/variables.css");
+@import url("base/reset.css");
+@import url("base/typography.css");
+@import url("base/utilities.css");
+@import url("base/animations.css");
+
+/* Shared Components */
+
+@import url("components/buttons.css");
+@import url("components/cards.css");
+@import url("components/forms.css");
+@import url("components/badges.css");
+
+/* Website */
+
+@import url("website/navbar.css");
+@import url("website/hero.css");
+@import url("website/categories.css");
+@import url("website/featured_foods.css");
+@import url("website/popular_dishes.css");
+@import url("website/special_offers.css");
+@import url("website/how_it_works.css");
+@import url("website/why_choose.css");
+@import url("website/testimonials.css");
+@import url("website/app_section.css");
+@import url("website/footer.css");
+@import url("cart/cart.css");
+@import url("orders/checkout.css");
+@import url("orders/success.css");
+
+@import url("menu/search_bar.css");
+@import url("menu/category_tabs.css");
+@import url("menu/food_grid.css");
+@import url("menu/food_card.css");
+@import url("menu/food_detail.css");

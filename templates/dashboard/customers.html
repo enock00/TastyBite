@@ -1,0 +1,201 @@
+{% extends "dashboard/dashboard_base.html" %}
+{% load static %}
+
+{% block title %}
+Customers
+{% endblock %}
+
+{% block page_title %}
+Customers
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/customers.css' %}">
+{% endblock %}
+
+{% block hero %}
+
+<section class="page-hero">
+
+    <div>
+
+        <span class="page-tag">
+            👥 Customer Management
+        </span>
+
+        <h1>Customers</h1>
+
+        <p>
+
+            Manage customer information and order history.
+
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block content %}
+
+<section class="stats-grid">
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+
+            <i class="fas fa-users"></i>
+
+        </div>
+
+        <div>
+
+            <p class="stat-title">Customers</p>
+
+            <h2 class="stat-number">
+
+                {{ customers.count }}
+
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+
+            <i class="fas fa-user-check"></i>
+
+        </div>
+
+        <div>
+
+            <p class="stat-title">Active</p>
+
+            <h2 class="stat-number">
+
+                {{ active_customers }}
+
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+
+            <i class="fas fa-star"></i>
+
+        </div>
+
+        <div>
+
+            <p class="stat-title">VIP</p>
+
+            <h2 class="stat-number">
+
+                {{ vip_customers }}
+
+            </h2>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card">
+
+        <div class="stat-icon">
+
+            <i class="fas fa-user-plus"></i>
+
+        </div>
+
+        <div>
+
+            <p class="stat-title">New</p>
+
+            <h2 class="stat-number">
+
+                {{ new_customers }}
+
+            </h2>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="customer-grid">
+
+{% for customer in customers %}
+
+<div class="customer-card">
+
+    <div class="customer-avatar">
+
+        {{ customer.name|first|upper }}
+
+    </div>
+
+    <h3>
+
+        {{ customer.name }}
+
+    </h3>
+
+    <p>
+
+        {{ customer.email }}
+
+    </p>
+
+    <span>
+
+        {{ customer.phone }}
+
+    </span>
+
+    <div class="customer-footer">
+
+        <small>
+
+            {{ customer.orders.count }} Orders
+
+        </small>
+
+        <a href="#"
+           class="btn btn-sm btn-primary">
+
+            View
+
+        </a>
+
+    </div>
+
+</div>
+
+{% empty %}
+
+<div class="dashboard-empty">
+
+    <i class="fas fa-users"></i>
+
+    <h3>
+
+        No customers found
+
+    </h3>
+
+</div>
+
+{% endfor %}
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,264 @@
+/*==================================================
+    REPORTS PAGE
+====================================================*/
+
+/*==========================
+    HERO
+===========================*/
+
+.page-hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:2.5rem;
+    border-radius:24px;
+    background:linear-gradient(135deg,#FF6B35,#FF8A5B);
+    color:#fff;
+    margin-bottom:2rem;
+    overflow:hidden;
+    position:relative;
+}
+
+.page-hero::before{
+    content:"";
+    position:absolute;
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    background:rgba(255,255,255,.08);
+    top:-140px;
+    right:-80px;
+}
+
+.page-tag{
+    display:inline-block;
+    padding:.45rem 1rem;
+    border-radius:999px;
+    background:rgba(255,255,255,.15);
+    font-size:.85rem;
+    margin-bottom:1rem;
+}
+
+.page-hero h1{
+    margin:.25rem 0;
+    font-size:2rem;
+    font-weight:700;
+}
+
+.page-hero p{
+    opacity:.95;
+    max-width:500px;
+}
+
+/*==========================
+    GRID
+===========================*/
+
+.dashboard-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:2rem;
+    margin-top:2rem;
+}
+
+/*==========================
+    PANELS
+===========================*/
+
+.dashboard-panel{
+    background:#fff;
+    border-radius:22px;
+    padding:2rem;
+    border:1px solid #EEF2F7;
+    box-shadow:0 12px 35px rgba(15,23,42,.05);
+}
+
+.panel-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:1.5rem;
+}
+
+.panel-header h3{
+    margin:0;
+    font-size:1.2rem;
+    color:#111827;
+}
+
+/*==========================
+    REPORT VALUE
+===========================*/
+
+.report-value{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:320px;
+}
+
+.report-value h1{
+    font-size:3rem;
+    color:var(--primary-color);
+    margin:0;
+}
+
+/*==========================
+    FOOD LIST
+===========================*/
+
+.food-list{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+}
+
+.food-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1rem;
+    border:1px solid #EEF2F7;
+    border-radius:16px;
+    transition:.3s;
+}
+
+.food-item:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+}
+
+.food-item strong{
+    display:block;
+    color:#111827;
+}
+
+.food-item p{
+    margin-top:.25rem;
+    color:#6B7280;
+}
+
+/*==========================
+    CATEGORY LIST
+===========================*/
+
+.category-list{
+    display:flex;
+    flex-direction:column;
+    gap:1rem;
+}
+
+.category-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1rem;
+    border-radius:14px;
+    background:#F8FAFC;
+}
+
+.category-item span{
+    color:#374151;
+}
+
+.category-item strong{
+    color:var(--primary-color);
+}
+
+/*==========================
+    TABLE
+===========================*/
+
+.report-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.report-table th{
+    text-align:left;
+    padding:1rem;
+    background:#F9FAFB;
+    color:#6B7280;
+    font-weight:600;
+}
+
+.report-table td{
+    padding:1rem;
+    border-bottom:1px solid #F1F5F9;
+}
+
+.report-table tr:hover{
+    background:#FAFAFA;
+}
+
+/*==========================
+    CHART
+===========================*/
+
+canvas{
+    width:100% !important;
+    height:320px !important;
+}
+
+/*==========================
+    EMPTY STATE
+===========================*/
+
+.dashboard-empty{
+    text-align:center;
+    padding:3rem 1rem;
+    color:#9CA3AF;
+}
+
+.dashboard-empty i{
+    font-size:3rem;
+    color:#D1D5DB;
+    margin-bottom:1rem;
+}
+
+/*==========================
+    RESPONSIVE
+===========================*/
+
+@media(max-width:992px){
+
+    .dashboard-grid{
+        grid-template-columns:1fr;
+    }
+
+    .page-hero{
+        padding:2rem;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .page-hero{
+        flex-direction:column;
+        text-align:center;
+        gap:1.5rem;
+    }
+
+    .report-value{
+        height:auto;
+        padding:2rem 0;
+    }
+
+    .report-value h1{
+        font-size:2.3rem;
+    }
+
+}
+
+@media(max-width:576px){
+
+    .dashboard-panel{
+        padding:1.25rem;
+    }
+
+    .page-hero h1{
+        font-size:1.6rem;
+    }
+
+}

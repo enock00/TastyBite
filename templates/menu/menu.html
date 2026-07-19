@@ -2,20 +2,143 @@
 {% load static %}
 
 {% block title %}
+{% if category %}
+{{ category.name }} | TastyBite
+{% else %}
 Our Menu | TastyBite
+{% endif %}
 {% endblock %}
 
 {% block extra_css %}
+
 <link rel="stylesheet" href="{% static 'css/menu/menu.css' %}">
-<link rel="stylesheet" href="{% static 'css/menu/food_grid.css' %}">
-<link rel="stylesheet" href="{% static 'css/menu/food_card.css' %}">
+<link rel="stylesheet" href="{% static 'css/menu/menu_hero.css' %}">
 <link rel="stylesheet" href="{% static 'css/menu/search_bar.css' %}">
 <link rel="stylesheet" href="{% static 'css/menu/category_tabs.css' %}">
+<link rel="stylesheet" href="{% static 'css/menu/food_grid.css' %}">
+<link rel="stylesheet" href="{% static 'css/menu/food_card.css' %}">
+
 {% endblock %}
 
 {% block content %}
 
 {% include "partials/navbar.html" %}
+
+<!--==================================
+            HERO
+===================================-->
+
+<section class="menu-hero">
+
+    <div class="container">
+
+        <div class="breadcrumb">
+
+            <a href="{% url 'core:home' %}">
+
+                Home
+
+            </a>
+
+            <span>/</span>
+
+            <span>
+
+                {% if category %}
+                    {{ category.name }}
+                {% else %}
+                    Menu
+                {% endif %}
+
+            </span>
+
+        </div>
+
+        <div class="menu-hero-content">
+
+            <div>
+
+                <span class="hero-tag">
+
+                    🍽 Freshly Prepared Every Day
+
+                </span>
+
+                <h1>
+
+                    {% if category %}
+
+                        {{ category.name }}
+
+                    {% else %}
+
+                        Explore Our Delicious Menu
+
+                    {% endif %}
+
+                </h1>
+
+                <p>
+
+                    {% if category %}
+
+                        {{ category.description|default:"Browse meals from this category." }}
+
+                    {% else %}
+
+                        From juicy burgers and artisan pizzas to refreshing drinks and desserts, discover meals prepared with fresh ingredients and delivered fast.
+
+                    {% endif %}
+
+                </p>
+
+            </div>
+
+            <div class="menu-stats">
+
+                <div>
+
+                    <strong>
+
+                        {{ foods|length }}
+
+                    </strong>
+
+                    <span>
+
+                        Meals
+
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <strong>
+
+                        {{ categories|length }}
+
+                    </strong>
+
+                    <span>
+
+                        Categories
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!--==================================
+            MENU CONTENT
+===================================-->
 
 <section class="menu-page">
 

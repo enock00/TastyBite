@@ -1,42 +1,197 @@
+/*==================================================
+    CATEGORY TABS
+====================================================*/
+
 .category-tabs{
 
     display:flex;
 
-    gap:15px;
+    align-items:center;
+
+    gap:18px;
 
     overflow-x:auto;
 
-    margin-bottom:45px;
+    padding:10px 0 25px;
 
-    padding-bottom:10px;
+    margin-bottom:40px;
+
+    scrollbar-width:none;
 
 }
 
-.category-tabs a{
+.category-tabs::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+/*==========================
+    CATEGORY CHIP
+===========================*/
+
+.category-pill{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:14px 24px;
+
+    background:#fff;
+
+    border-radius:50px;
 
     text-decoration:none;
 
-    background:white;
-
-    color:#374151;
-
-    padding:14px 28px;
-
-    border-radius:40px;
+    color:#334155;
 
     white-space:nowrap;
 
-    box-shadow:0 8px 20px rgba(0,0,0,.06);
+    box-shadow:
+
+        0 8px 25px rgba(15,23,42,.05);
+
+    transition:.35s;
+
+    border:1px solid transparent;
+
+    font-weight:500;
+
+}
+
+/*==========================
+    ICON
+===========================*/
+
+.category-pill i{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#FFF4EF;
+
+    color:#FF6B35;
 
     transition:.3s;
 
 }
 
-.category-tabs a:hover,
-.category-tabs a.active{
+/*==========================
+    COUNT
+===========================*/
 
-    background:#F97316;
+.category-pill small{
 
-    color:white;
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:26px;
+
+    height:26px;
+
+    border-radius:50%;
+
+    background:#F1F5F9;
+
+    color:#64748B;
+
+    font-size:.72rem;
+
+}
+
+/*==========================
+    HOVER
+===========================*/
+
+.category-pill:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#FFE2D5;
+
+    box-shadow:
+
+        0 18px 40px rgba(15,23,42,.08);
+
+}
+
+.category-pill:hover i{
+
+    background:#FF6B35;
+
+    color:#fff;
+
+}
+
+/*==========================
+    ACTIVE
+===========================*/
+
+.category-pill.active{
+
+    background:linear-gradient(
+        135deg,
+        #FF6B35,
+        #FF914D
+    );
+
+    color:#fff;
+
+}
+
+.category-pill.active i{
+
+    background:rgba(255,255,255,.18);
+
+    color:#fff;
+
+}
+
+.category-pill.active small{
+
+    background:#fff;
+
+    color:#FF6B35;
+
+}
+
+/*==========================
+    MOBILE
+===========================*/
+
+@media(max-width:768px){
+
+    .category-pill{
+
+        padding:12px 18px;
+
+        font-size:.9rem;
+
+    }
+
+    .category-pill i{
+
+        width:36px;
+
+        height:36px;
+
+        font-size:.9rem;
+
+    }
 
 }

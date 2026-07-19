@@ -1,0 +1,73 @@
+/*==================================================
+    ORDERS PAGE
+====================================================*/
+
+.table-wrapper{
+
+    overflow-x:auto;
+
+}
+
+.dashboard-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.dashboard-table thead{
+
+    background:#F8FAFC;
+
+}
+
+.dashboard-table th{
+
+    text-align:left;
+
+    padding:1rem 1.5rem;
+
+    font-weight:600;
+
+    color:#374151;
+
+    border-bottom:1px solid #E5E7EB;
+
+}
+
+.dashboard-table td{
+
+    padding:1.25rem 1.5rem;
+
+    border-bottom:1px solid #EEF2F7;
+
+}
+
+.dashboard-table tbody tr{
+
+    transition:.3s;
+
+}
+
+.dashboard-table tbody tr:hover{
+
+    background:#FFF8F5;
+
+}
+
+.dashboard-table td:last-child{
+
+    text-align:right;
+
+}
+
+@media(max-width:768px){
+
+    .dashboard-table{
+
+        min-width:700px;
+
+    }
+
+}

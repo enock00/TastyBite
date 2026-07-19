@@ -1,0 +1,141 @@
+<div class="menu-card">
+
+    <!--=================================
+                IMAGE
+    ==================================-->
+
+    <div class="menu-image">
+
+        {% if food.image %}
+
+<img src="{{ food.image.url }}" alt="{{ food.name }}">
+
+{% endif %}
+
+        {% if food.featured %}
+
+            <span class="featured-badge">
+
+                <i class="fas fa-star"></i>
+
+                Featured
+
+            </span>
+
+        {% endif %}
+
+    </div>
+
+    <!--=================================
+                BODY
+    ==================================-->
+
+    <div class="menu-body">
+
+        <div class="menu-header">
+
+            <div>
+
+                <h3>
+
+                    {{ food.name }}
+
+                </h3>
+
+                <span class="menu-category">
+
+                    {{ food.category.name }}
+
+                </span>
+
+            </div>
+
+            <div class="menu-price">
+
+                KSh {{ food.price }}
+
+            </div>
+
+        </div>
+
+        <p class="menu-description">
+
+            {{ food.description|truncatewords:20 }}
+
+        </p>
+
+        <!--=================================
+                    INFO
+        ==================================-->
+
+        <div class="menu-meta">
+
+            <span>
+
+                <i class="fas fa-clock"></i>
+
+                20 mins
+
+            </span>
+
+            <span>
+
+                <i class="fas fa-fire"></i>
+
+                Fresh
+
+            </span>
+
+        </div>
+
+        <!--=================================
+                    STATUS
+        ==================================-->
+
+        <div class="menu-footer">
+
+            {% if food.available %}
+
+                <span class="status available">
+
+                    <i class="fas fa-circle"></i>
+
+                    Available
+
+                </span>
+
+            {% else %}
+
+                <span class="status unavailable">
+
+                    <i class="fas fa-circle"></i>
+
+                    Out of Stock
+
+                </span>
+
+            {% endif %}
+
+            <div class="menu-actions">
+
+                <a href="{% url 'dashboard:edit_food' food.id %}"
+                   class="action-btn edit">
+
+                    <i class="fas fa-pen"></i>
+
+                </a>
+
+                <a href="{% url 'dashboard:delete_food' food.id %}"
+                   class="action-btn delete">
+
+                    <i class="fas fa-trash"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

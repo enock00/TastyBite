@@ -1,0 +1,383 @@
+/*==================================================
+    SIDEBAR
+====================================================*/
+
+.sidebar{
+
+    position:sticky;
+
+    top:0;
+
+    height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    padding:2rem 1.5rem;
+
+    background:#FFFFFF;
+
+    border-right:1px solid #EEF2F7;
+
+    overflow-y:auto;
+
+    z-index:100;
+
+}
+
+/*==================================================
+    LOGO
+====================================================*/
+
+.sidebar-logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1rem;
+
+    margin-bottom:2rem;
+
+}
+
+.logo-icon{
+
+    width:56px;
+
+    height:56px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:18px;
+
+    background:linear-gradient(135deg,#FF6B35,#FF3B30);
+
+    color:#fff;
+
+    font-size:1.4rem;
+
+    box-shadow:0 12px 24px rgba(255,107,53,.25);
+
+}
+
+.sidebar-logo h2{
+
+    margin:0;
+
+    font-size:1.6rem;
+
+    font-weight:700;
+
+    color:#111827;
+
+}
+
+.sidebar-logo span{
+
+    display:block;
+
+    margin-top:.2rem;
+
+    font-size:.85rem;
+
+    color:#6B7280;
+
+}
+
+/*==================================================
+    ADD BUTTON
+====================================================*/
+
+.sidebar .btn{
+
+    width:100%;
+
+    justify-content:center;
+
+    margin-bottom:2rem;
+
+}
+
+/*==================================================
+    NAVIGATION
+====================================================*/
+
+.sidebar-nav{
+
+    flex:1;
+
+}
+
+.sidebar-title{
+
+    margin:2rem 0 .75rem;
+
+    padding-left:.75rem;
+
+    font-size:.72rem;
+
+    font-weight:700;
+
+    color:#9CA3AF;
+
+    letter-spacing:.12em;
+
+    text-transform:uppercase;
+
+}
+
+.sidebar-menu{
+
+    list-style:none;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+.sidebar-menu li{
+
+    margin-bottom:.35rem;
+
+}
+
+.sidebar-menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1rem;
+
+    padding:1rem 1rem;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    color:#4B5563;
+
+    font-size:.96rem;
+
+    font-weight:500;
+
+    transition:all .25s ease;
+
+}
+
+.sidebar-menu a i{
+
+    width:22px;
+
+    text-align:center;
+
+    font-size:1rem;
+
+}
+
+/* Hover */
+
+.sidebar-menu a:hover{
+
+    background:#FFF4F1;
+
+    color:#FF5A30;
+
+    transform:translateX(4px);
+
+}
+
+/* Active */
+
+.sidebar-menu a.active{
+
+    background:linear-gradient(90deg,#FF5A30,#FF7A45);
+
+    color:#fff;
+
+    box-shadow:0 12px 28px rgba(255,90,48,.22);
+
+}
+
+.sidebar-menu a.active i{
+
+    color:#fff;
+
+}
+
+/*==================================================
+    USER CARD
+====================================================*/
+
+.sidebar-user{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1rem;
+
+    margin-top:2rem;
+
+    padding-top:1.5rem;
+
+    border-top:1px solid #EEF2F7;
+
+}
+
+.sidebar-user img{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.sidebar-user h4{
+
+    margin:0;
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    color:#111827;
+
+}
+
+.sidebar-user span{
+
+    display:block;
+
+    margin-top:.2rem;
+
+    font-size:.8rem;
+
+    color:#6B7280;
+
+}
+
+/*==================================================
+    SCROLLBAR
+====================================================*/
+
+.sidebar::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+
+    background:#E5E7EB;
+
+    border-radius:10px;
+
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover{
+
+    background:#D1D5DB;
+
+}
+
+/*==================================================
+    TABLET
+====================================================*/
+
+@media (max-width:992px){
+
+    .sidebar{
+
+        padding:1.25rem .75rem;
+
+    }
+
+    .sidebar-logo{
+
+        justify-content:center;
+
+    }
+
+    .sidebar-logo h2,
+
+    .sidebar-logo span,
+
+    .sidebar-title,
+
+    .sidebar-user div,
+
+    .sidebar .btn span{
+
+        display:none;
+
+    }
+
+    .sidebar .btn{
+
+        padding:.9rem;
+
+    }
+
+    .sidebar-menu a{
+
+        justify-content:center;
+
+        padding:1rem;
+
+    }
+
+    .sidebar-menu a i{
+
+        margin:0;
+
+        width:auto;
+
+        font-size:1.2rem;
+
+    }
+
+}
+
+/*==================================================
+    MOBILE
+====================================================*/
+
+@media (max-width:768px){
+
+    .sidebar{
+
+        position:fixed;
+
+        left:-300px;
+
+        top:0;
+
+        width:280px;
+
+        transition:left .35s ease;
+
+        box-shadow:0 20px 50px rgba(0,0,0,.15);
+
+    }
+
+    .sidebar.open{
+
+        left:0;
+
+    }
+
+}

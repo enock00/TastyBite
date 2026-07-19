@@ -1,0 +1,35 @@
+.container{
+    width:92%;
+    max-width:1400px;
+    margin:0 auto;
+}
+
+.grid{
+
+    display:grid;
+}
+
+.flex{
+
+    display:flex;
+}
+
+.flex-between{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.hidden{
+
+    display:none;
+
+}

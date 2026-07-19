@@ -69,3 +69,46 @@ class AddToCartView(View):
         cart.add(food)
 
         return redirect("cart:cart_detail")
+
+class CategoryMenuView(ListView):
+
+    model = FoodItem
+
+    template_name = "menu/menu.html"
+
+    context_object_name = "foods"
+
+    def dispatch(self, request, *args, **kwargs):
+
+        self.category = get_object_or_404(
+            Category,
+            slug=self.kwargs["slug"]
+        )
+
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_queryset(self):
+
+        return (
+            FoodItem.objects
+            .filter(
+                category=self.category,
+                is_available=True,
+            )
+            .select_related("category")
+        )
+
+    def get_context_data(self, **kwargs):
+
+        context = super().get_context_data(**kwargs)
+
+        context["category"] = self.category
+
+        context["categories"] = (
+            Category.objects
+            .prefetch_related("food_items")
+            .filter(food_items__is_available=True)
+            .distinct()
+        )
+
+        return context

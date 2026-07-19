@@ -1,0 +1,369 @@
+/*==================================================
+    MENU HERO
+====================================================*/
+
+.menu-hero{
+
+    padding:170px 0 100px;
+    background:linear-gradient(135deg,#FFF7F3 0%,#FFFFFF 100%);
+    overflow:hidden;
+    position:relative;
+
+}
+
+.hero-container{
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+
+}
+
+/*==================================================
+    CONTENT
+====================================================*/
+
+.hero-content h1{
+
+    font-size:3.5rem;
+    line-height:1.15;
+    color:#0F172A;
+    margin:20px 0;
+
+}
+
+.hero-content p{
+
+    font-size:1.1rem;
+    line-height:1.8;
+    color:#64748B;
+    max-width:600px;
+
+}
+
+.hero-tag{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:#FFE7DE;
+    color:#FF6B35;
+    padding:10px 22px;
+    border-radius:50px;
+    font-weight:600;
+
+}
+
+/*==================================================
+    BREADCRUMB
+====================================================*/
+
+.breadcrumb{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:25px;
+
+}
+
+.breadcrumb a{
+
+    color:#64748B;
+    text-decoration:none;
+
+}
+
+.breadcrumb a:hover{
+
+    color:#FF6B35;
+
+}
+
+.breadcrumb i{
+
+    font-size:.8rem;
+    color:#CBD5E1;
+
+}
+
+.breadcrumb span{
+
+    color:#FF6B35;
+    font-weight:600;
+
+}
+
+/*==================================================
+    BUTTONS
+====================================================*/
+
+.hero-buttons{
+
+    display:flex;
+    gap:20px;
+    margin:40px 0;
+
+}
+
+.btn-primary,
+.btn-secondary{
+
+    padding:16px 32px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+
+}
+
+.btn-primary{
+
+    background:#FF6B35;
+    color:#FFFFFF;
+    box-shadow:0 15px 35px rgba(255,107,53,.25);
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.btn-secondary{
+
+    border:2px solid #FF6B35;
+    color:#FF6B35;
+
+}
+
+.btn-secondary:hover{
+
+    background:#FF6B35;
+    color:#FFFFFF;
+
+}
+
+/*==================================================
+    STATS
+====================================================*/
+
+.hero-stats{
+
+    display:flex;
+    gap:45px;
+
+}
+
+.hero-stats h3{
+
+    font-size:2rem;
+    color:#FF6B35;
+
+}
+
+.hero-stats span{
+
+    color:#64748B;
+
+}
+
+/*==================================================
+    IMAGE
+====================================================*/
+
+.hero-image{
+
+    position:relative;
+    text-align:center;
+
+}
+
+.hero-image img{
+
+    width:100%;
+    max-width:520px;
+    animation:float 5s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+    0%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+}
+
+/*==================================================
+    FLOATING CARDS
+====================================================*/
+
+.floating-card{
+
+    position:absolute;
+    background:#FFFFFF;
+    border-radius:18px;
+    padding:18px 20px;
+    display:flex;
+    gap:15px;
+    align-items:center;
+    box-shadow:0 20px 40px rgba(15,23,42,.08);
+
+}
+
+.floating-card i{
+
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#FFF3EE;
+    color:#FF6B35;
+
+}
+
+.card-one{
+
+    top:60px;
+    left:-10px;
+
+}
+
+.card-two{
+
+    bottom:60px;
+    right:-20px;
+
+}
+
+.floating-card strong{
+
+    display:block;
+    color:#111827;
+
+}
+
+.floating-card span{
+
+    color:#64748B;
+    font-size:.9rem;
+
+}
+
+/*==================================================
+    RESPONSIVE
+====================================================*/
+
+@media(max-width:992px){
+
+.hero-container{
+
+grid-template-columns:1fr;
+text-align:center;
+
+}
+
+.hero-content p{
+
+margin:auto;
+
+}
+
+.hero-buttons,
+.hero-stats,
+.breadcrumb{
+
+justify-content:center;
+
+}
+
+.hero-image{
+
+margin-top:50px;
+
+}
+
+.card-one{
+
+left:0;
+
+}
+
+.card-two{
+
+right:0;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.menu-hero{
+
+padding:140px 0 70px;
+
+}
+
+.hero-content h1{
+
+font-size:2.6rem;
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+}
+
+.hero-stats{
+
+justify-content:space-between;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.hero-content h1{
+
+font-size:2.2rem;
+
+}
+
+.hero-stats{
+
+flex-direction:column;
+gap:20px;
+
+}
+
+.hero-buttons a{
+
+width:100%;
+text-align:center;
+
+}
+
+.floating-card{
+
+display:none;
+
+}
+
+}

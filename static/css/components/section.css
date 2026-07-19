@@ -1,0 +1,237 @@
+/*==================================================
+    SECTION COMPONENT
+====================================================*/
+
+/*==========================
+    SECTION
+===========================*/
+
+.section{
+
+    padding:100px 0;
+
+    position:relative;
+
+}
+
+.section-sm{
+
+    padding:70px 0;
+
+}
+
+.section-lg{
+
+    padding:140px 0;
+
+}
+
+/*==========================
+    SECTION HEADER
+===========================*/
+
+.section-header{
+
+    max-width:760px;
+
+    margin:0 auto 70px;
+
+    text-align:center;
+
+}
+
+.section-tag{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 22px;
+
+    border-radius:999px;
+
+    background:#FFF3EC;
+
+    color:#FF6B35;
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+    letter-spacing:.4px;
+
+    margin-bottom:18px;
+
+}
+
+.section-title{
+
+    font-size:clamp(2rem,5vw,3.3rem);
+
+    font-weight:700;
+
+    line-height:1.2;
+
+    color:#111827;
+
+    margin-bottom:20px;
+
+}
+
+.section-title span{
+
+    color:#FF6B35;
+
+}
+
+.section-description{
+
+    color:#64748B;
+
+    font-size:1.05rem;
+
+    line-height:1.9;
+
+    max-width:650px;
+
+    margin:0 auto;
+
+}
+
+/*==========================
+    DECORATION
+===========================*/
+
+.section-header::after{
+
+    content:"";
+
+    width:70px;
+
+    height:4px;
+
+    background:#FF6B35;
+
+    border-radius:100px;
+
+    display:block;
+
+    margin:30px auto 0;
+
+}
+
+/*==========================
+    ALIGNMENT
+===========================*/
+
+.text-left{
+
+    text-align:left;
+
+}
+
+.text-left .section-description{
+
+    margin:0;
+
+}
+
+.text-left::after{
+
+    margin:30px 0 0;
+
+}
+
+.text-right{
+
+    text-align:right;
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+/*==========================
+    BACKGROUNDS
+===========================*/
+
+.bg-light{
+
+    background:#F8FAFC;
+
+}
+
+.bg-white{
+
+    background:#FFFFFF;
+
+}
+
+.bg-dark{
+
+    background:#111827;
+
+}
+
+.bg-dark .section-title{
+
+    color:#FFFFFF;
+
+}
+
+.bg-dark .section-description{
+
+    color:#CBD5E1;
+
+}
+
+/*==========================
+    RESPONSIVE
+===========================*/
+
+@media(max-width:992px){
+
+    .section{
+
+        padding:80px 0;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .section{
+
+        padding:70px 0;
+
+    }
+
+    .section-header{
+
+        margin-bottom:50px;
+
+    }
+
+    .section-title{
+
+        font-size:2.2rem;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .section{
+
+        padding:60px 0;
+
+    }
+
+}

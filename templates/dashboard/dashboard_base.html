@@ -3,136 +3,314 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>
-        {% block title %}
-        Dashboard
-        {% endblock %}
-    </title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Global CSS -->
+
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+    {% block extra_css %}
+
+    {% endblock %}
+
 </head>
 
 <body>
 
 <div class="dashboard-layout">
 
-    <!-- ================= Sidebar ================= -->
+    <!--=================================
+                SIDEBAR
+    ==================================-->
 
     <aside class="sidebar">
 
-        <div class="logo">
-            <i class="fas fa-utensils"></i>
-            <h2>TastyBite</h2>
+        <!-- Logo -->
+
+        <div class="sidebar-logo">
+
+            <div class="logo-icon">
+
+                <i class="fas fa-burger"></i>
+
+            </div>
+
+            <div>
+
+                <h2>TastyBite</h2>
+
+                <span>Restaurant Dashboard</span>
+
+            </div>
+
         </div>
 
-        <nav>
+        <!-- Quick Button -->
 
-            <ul>
+        <a href="{% url 'dashboard:add_food' %}"
+           class="btn btn-primary btn-lg">
 
-                <li class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
-                    <a href="{% url 'dashboard:home' %}">
-                        <i class="fas fa-chart-pie"></i>
-                        <span>Dashboard</span>
+            <i class="fas fa-plus"></i>
+
+            Add Food
+
+        </a>
+
+        <!--============================
+                Navigation
+        =============================-->
+
+        <nav class="sidebar-nav">
+
+            <p class="sidebar-title">
+
+                MAIN
+
+            </p>
+
+            <ul class="sidebar-menu">
+
+                <li>
+
+                    <a href="{% url 'dashboard:home' %}"
+
+                       class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+
+                        <i class="fas fa-house"></i>
+
+                        Dashboard
+
                     </a>
+
                 </li>
 
-                <li class="{% if request.resolver_match.url_name == 'orders' %}active{% endif %}">
-                    <a href="{% url 'dashboard:orders' %}">
+                <li>
+
+                    <a href="{% url 'dashboard:orders' %}"
+
+                       class="{% if request.resolver_match.url_name == 'orders' %}active{% endif %}">
+                                                                                
                         <i class="fas fa-receipt"></i>
-                        <span>Orders</span>
-                    </a>
-                </li>
 
-                <li class="{% if request.resolver_match.url_name == 'menu' %}active{% endif %}">
-                    <a href="{% url 'dashboard:menu' %}">
-                        <i class="fas fa-utensils"></i>
-                        <span>Menu</span>
+                        Orders
+
                     </a>
+
                 </li>
 
                 <li>
-                    <a href="#">
-                        <i class="fas fa-layer-group"></i>
-                        <span>Categories</span>
+
+                    <a href="{% url 'dashboard:menu' %}"
+
+                       class="{% if request.resolver_match.url_name == 'menu' %}active{% endif %}">
+
+                        <i class="fas fa-bowl-food"></i>
+
+                        Menu
+
                     </a>
+
                 </li>
 
                 <li>
+
                     <a href="#">
+
                         <i class="fas fa-users"></i>
-                        <span>Customers</span>
+
+                        Customers
+
                     </a>
+
+                </li>
+
+            </ul>
+
+            <p class="sidebar-title">
+
+                MANAGEMENT
+
+            </p>
+
+            <ul class="sidebar-menu">
+
+                <li>
+
+                    <a href="categories">
+
+                        <i class="fas fa-layer-group"></i>
+
+                        Categories
+
+                    </a>
+
                 </li>
 
                 <li>
-                    <a href="#">
+
+                    <a href="reports">
+
                         <i class="fas fa-chart-line"></i>
-                        <span>Reports</span>
+
+                        Analytics
+
                     </a>
+
                 </li>
 
                 <li>
+
+                    <a href="#">
+
+                        <i class="fas fa-star"></i>
+
+                        Reviews
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+            <p class="sidebar-title">
+
+                SYSTEM
+
+            </p>
+
+            <ul class="sidebar-menu">
+
+                <li>
+
                     <a href="/admin/">
+
                         <i class="fas fa-user-shield"></i>
-                        <span>Django Admin</span>
+
+                        Django Admin
+
                     </a>
+
                 </li>
 
                 <li>
+
                     <a href="/">
+
                         <i class="fas fa-globe"></i>
-                        <span>Website</span>
+
+                        Website
+
                     </a>
+
+                </li>
+
+                <li>
+
+                    <a href="#">
+
+                        <i class="fas fa-gear"></i>
+
+                        Settings
+
+                    </a>
+
                 </li>
 
             </ul>
 
         </nav>
 
-        <div class="sidebar-footer">
+        <!--============================
+                USER
+        =============================-->
 
-            <div class="admin-avatar">
-                <i class="fas fa-user-circle"></i>
-            </div>
+        <div class="sidebar-user">
 
-            <div class="admin-info">
-                <strong>Administrator</strong>
-                <small>Restaurant Manager</small>
+            <img src="https://ui-avatars.com/api/?name={{ request.user.username }}&background=FF6B35&color=fff"
+                 alt="Profile">
+
+            <div>
+
+                <h4>
+
+                    {{ request.user.get_full_name|default:request.user.username }}
+
+                </h4>
+
+                <span>
+
+                    Restaurant Manager
+
+                </span>
+
             </div>
 
         </div>
 
     </aside>
 
-    <!-- ================= Main Content ================= -->
+    <!--=================================
+            MAIN CONTENT
+    ==================================-->
 
-    <div class="main-area">
+    <main class="dashboard">
 
-        <!-- Topbar -->
+        <!--============================
+                TOPBAR
+        =============================-->
 
         <header class="topbar">
 
             <div class="topbar-left">
 
-                <button class="menu-toggle">
+                <button class="mobile-toggle">
+
                     <i class="fas fa-bars"></i>
+
                 </button>
 
-                <div class="page-heading">
+                <div class="page-title">
 
-                    <h2>
+                    <h1>
+
                         {% block page_title %}
-                        Dashboard
-                        {% endblock %}
-                    </h2>
 
-                    <small>Restaurant Management System</small>
+                        Dashboard
+
+                        {% endblock %}
+
+                    </h1>
+
+                    <p>
+
+                        Welcome back,
+
+                        {{ request.user.first_name|default:request.user.username }}
+
+                        👋
+
+                    </p>
 
                 </div>
 
@@ -144,36 +322,51 @@
 
                     <i class="fas fa-search"></i>
 
-                    <input
-                        type="text"
-                        placeholder="Search...">
+                    <input type="search"
+                           placeholder="Search orders, menu, customers...">
 
                 </div>
 
-                <button class="top-icon">
+                <button class="notification">
 
                     <i class="far fa-bell"></i>
 
-                    <span class="badge">3</span>
+                    <span class="badge">
+
+                        3
+
+                    </span>
 
                 </button>
 
-                <button class="top-icon">
+                <a href="{% url 'dashboard:add_food' %}"
 
-                    <i class="fas fa-moon"></i>
+                   class="btn btn-primary">
 
-                </button>
+                    <i class="fas fa-plus"></i>
+
+                    Food
+
+                </a>
 
                 <div class="profile">
 
-                    <img src="https://ui-avatars.com/api/?name=Admin&background=4F46E5&color=fff"
+                    <img src="https://ui-avatars.com/api/?name={{ request.user.username }}&background=FF6B35&color=fff"
                          alt="Admin">
 
                     <div>
 
-                        <strong>Administrator</strong>
+                        <strong>
 
-                        <small>Restaurant Owner</small>
+                            {{ request.user.get_full_name|default:request.user.username }}
+
+                        </strong>
+
+                        <small>
+
+                            Restaurant Manager
+
+                        </small>
 
                     </div>
 
@@ -183,22 +376,38 @@
 
         </header>
 
-        <!-- Page Content -->
+        <!--============================
+                HERO SECTION
+        =============================-->
 
-        <main class="dashboard-content">
+        {% block hero %}
+
+        {% endblock %}
+
+        <!--============================
+                PAGE CONTENT
+        =============================-->
+
+        <section class="dashboard-content">
 
             {% block content %}
 
             {% endblock %}
 
-        </main>
+        </section>
 
-    </div>
+    </main>
 
 </div>
 
-<script src="{% static 'js/dashboard.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<script src="{% static 'js/dashboard.js' %}"></script>
+
+{% block extra_js %}
+
+{% endblock %}
+
 </body>
+
 </html>

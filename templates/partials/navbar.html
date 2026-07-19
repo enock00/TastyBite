@@ -1,143 +1,276 @@
 {% load static %}
 
-<header class="header">
+<header class="header" id="header">
 
-    <div class="container navbar">
+    <div class="container">
 
-        <!-- Logo -->
-        <a href="{% url 'core:home' %}" class="logo">
+        <div class="navbar">
 
-            <i class="fas fa-utensils"></i>
+            <!-- ==========================
+                    LOGO
+            =========================== -->
 
-            <span>Tasty<span class="orange">Bite</span></span>
+            <a href="{% url 'core:home' %}" class="logo">
 
-        </a>
+                <div class="logo-icon">
 
-        <!-- Desktop Navigation -->
-        <nav class="nav-menu" id="nav-menu">
-
-            <ul class="nav-list">
-
-                <li>
-                    <a href="{% url 'core:home' %}"
-                       class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
-                        Home
-                    </a>
-                </li>
-
-                <li>
-                    <a href="{% url 'menu:menu' %}"
-                       class="{% if request.resolver_match.url_name == 'menu' %}active{% endif %}">
-                        Menu
-                    </a>
-                </li>
-
-                <li><a href="#">Offers</a></li>
-
-                <li><a href="#">About</a></li>
-
-                <li><a href="#">Contact</a></li>
-
-            </ul>
-
-        </nav>
-
-        <!-- Search -->
-        <form action="{% url 'menu:menu' %}"
-              method="GET"
-              class="search-box">
-
-            <i class="fas fa-search"></i>
-
-            <input
-                type="search"
-                name="search"
-                value="{{ request.GET.search }}"
-                placeholder="Search food...">
-
-        </form>
-
-        <!-- Right Side -->
-        <div class="nav-actions">
-
-            <a href="#" class="icon-btn">
-
-                <i class="far fa-heart"></i>
-
-                <span class="badge">2</span>
-
-            </a>
-
-            <a href="{% url 'cart:cart_detail' %}"
-               class="icon-btn">
-
-                <i class="fas fa-shopping-cart"></i>
-
-                {% if cart|length %}
-                    <span class="badge">
-                        {{ cart|length }}
-                    </span>
-                {% endif %}
-
-            </a>
-
-            {% if user.is_authenticated %}
-
-            <div class="profile-menu">
-
-                <button class="profile-btn">
-
-                    <i class="far fa-user-circle"></i>
-
-                    <span>
-
-                        {{ user.first_name|default:user.username }}
-
-                    </span>
-
-                    <i class="fas fa-chevron-down"></i>
-
-                </button>
-
-                <div class="dropdown">
-
-                    <a href="#">My Profile</a>
-
-                    <a href="#">My Orders</a>
-
-                    <a href="#">Wishlist</a>
-
-                    <hr>
-
-                    <a href="#">Logout</a>
+                    <i class="fas fa-burger"></i>
 
                 </div>
 
+                <div class="logo-text">
+
+                    <h2>
+
+                        Tasty<span>Bite</span>
+
+                    </h2>
+
+                    <small>
+                        Fresh • Fast • Delicious
+                    </small>
+
+                </div>
+
+            </a>
+
+
+            <!-- ==========================
+                    NAVIGATION
+            =========================== -->
+
+            <nav class="nav-menu" id="nav-menu">
+
+                <ul class="nav-list">
+
+                    <li>
+
+                        <a href="{% url 'core:home' %}"
+                           class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+
+                            Home
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="{% url 'menu:menu' %}"
+                           class="{% if request.resolver_match.url_name == 'menu' %}active{% endif %}">
+
+                            Menu
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#offers">
+
+                            Special Offers
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#about">
+
+                            About Us
+
+                        </a>
+
+                    </li>
+
+                    <li>
+
+                        <a href="#contact">
+
+                            Contact
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </nav>
+
+
+            <!-- ==========================
+                    RIGHT SIDE
+            =========================== -->
+
+            <div class="nav-right">
+
+                <!-- Search -->
+
+                <form action="{% url 'menu:menu' %}"
+                      method="GET"
+                      class="search-box">
+
+                    <i class="fas fa-search"></i>
+
+                    <input
+                        type="search"
+                        name="search"
+                        placeholder="Search burgers, pizza..."
+                        value="{{ request.GET.search }}">
+
+                </form>
+
+
+                <!-- Wishlist -->
+
+                <a href="#"
+                   class="icon-btn"
+                   aria-label="Wishlist">
+
+                    <i class="far fa-heart"></i>
+
+                    <span class="badge">
+
+                        2
+
+                    </span>
+
+                </a>
+
+
+                <!-- Cart -->
+
+                <a href="{% url 'cart:cart_detail' %}"
+                   class="icon-btn cart-btn"
+                   aria-label="Shopping Cart">
+
+                    <i class="fas fa-shopping-cart"></i>
+
+                    {% if cart|length %}
+
+                    <span class="badge">
+
+                        {{ cart|length }}
+
+                    </span>
+
+                    {% endif %}
+
+                </a>
+
+
+                <!-- User -->
+
+                {% if user.is_authenticated %}
+
+                <div class="profile-menu">
+
+                    <button
+                        class="profile-btn"
+                        id="profile-toggle">
+
+                        <img
+                            src="https://ui-avatars.com/api/?name={{ user.first_name|default:user.username }}&background=FF6B35&color=fff"
+                            alt="Profile">
+
+                        <div class="profile-info">
+
+                            <small>
+
+                                Welcome,
+
+                            </small>
+
+                            <span>
+
+                                {{ user.first_name|default:user.username }}
+
+                            </span>
+
+                        </div>
+
+                        <i class="fas fa-chevron-down"></i>
+
+                    </button>
+
+                    <div class="dropdown">
+
+                        <a href="#">
+
+                            <i class="far fa-user"></i>
+
+                            My Profile
+
+                        </a>
+
+                        <a href="#">
+
+                            <i class="fas fa-box"></i>
+
+                            My Orders
+
+                        </a>
+
+                        <a href="#">
+
+                            <i class="far fa-heart"></i>
+
+                            Favorites
+
+                        </a>
+
+                        <hr>
+
+                        <a href="#">
+
+                            <i class="fas fa-right-from-bracket"></i>
+
+                            Logout
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+                {% else %}
+
+                <a href="#"
+                   class="login-btn">
+
+                    Login
+
+                </a>
+
+                {% endif %}
+
+
+                <!-- CTA -->
+
+                <a href="{% url 'menu:menu' %}"
+                   class="order-btn">
+
+                    <i class="fas fa-utensils"></i>
+
+                    Order Now
+
+                </a>
+
+
+                <!-- Mobile Toggle -->
+
+                <button
+                    class="menu-toggle"
+                    id="menu-toggle"
+                    aria-label="Open Menu">
+
+                    <i class="fas fa-bars"></i>
+
+                </button>
+
             </div>
-
-            {% else %}
-
-            <a href="#" class="login-btn">
-
-                Login
-
-            </a>
-
-            {% endif %}
-
-            <a href="{% url 'menu:menu' %}"
-               class="order-btn">
-
-                Order Now
-
-            </a>
-
-            <button class="menu-toggle"
-                    id="menu-toggle">
-
-                <i class="fas fa-bars"></i>
-
-            </button>
 
         </div>
 

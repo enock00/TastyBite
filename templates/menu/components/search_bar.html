@@ -1,27 +1,157 @@
-{% load static %}
+<form method="GET" class="menu-toolbar">
 
-<div class="search-section">
+    <!--==========================
+            SEARCH
+    ===========================-->
 
-    <form method="GET" class="search-form">
+    <div class="toolbar-search">
 
-        <div class="search-input">
+        <i class="fas fa-search"></i>
 
-            <i class="fa-solid fa-magnifying-glass"></i>
+        <input
+            type="search"
+            name="search"
+            value="{{ request.GET.search }}"
+            placeholder="Search burgers, pizza, drinks..."
+        >
 
-            <input
-                type="text"
-                name="q"
-                value="{{ request.GET.q }}"
-                placeholder="Search pizza, burger, drinks...">
+    </div>
 
-        </div>
+    <!--==========================
+            CATEGORY
+    ===========================-->
 
-        <button type="submit">
+    <div class="toolbar-select">
 
-            Search
+        <i class="fas fa-layer-group"></i>
 
-        </button>
+        <select name="category">
 
-    </form>
+            <option value="">
+
+                All Categories
+
+            </option>
+
+            {% for category in categories %}
+
+            <option
+                value="{{ category.slug }}"
+                {% if request.GET.category == category.slug %}
+                selected
+                {% endif %}
+            >
+
+                {{ category.name }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <!--==========================
+            SORT
+    ===========================-->
+
+    <div class="toolbar-select">
+
+        <i class="fas fa-arrow-down-wide-short"></i>
+
+        <select name="sort">
+
+            <option value="popular"
+                {% if request.GET.sort == "popular" %}
+                selected
+                {% endif %}
+            >
+                Most Popular
+            </option>
+
+            <option value="latest"
+                {% if request.GET.sort == "latest" %}
+                selected
+                {% endif %}
+            >
+                Newest
+            </option>
+
+            <option value="price_low"
+                {% if request.GET.sort == "price_low" %}
+                selected
+                {% endif %}
+            >
+                Price: Low → High
+            </option>
+
+            <option value="price_high"
+                {% if request.GET.sort == "price_high" %}
+                selected
+                {% endif %}
+            >
+                Price: High → Low
+            </option>
+
+            <option value="rating"
+                {% if request.GET.sort == "rating" %}
+                selected
+                {% endif %}
+            >
+                Highest Rated
+            </option>
+
+        </select>
+
+    </div>
+
+    <!--==========================
+            BUTTONS
+    ===========================-->
+
+    <button type="submit" class="toolbar-btn">
+
+        <i class="fas fa-search"></i>
+
+        Search
+
+    </button>
+
+    {% if request.GET %}
+
+    <a href="{% url 'menu:menu' %}"
+
+       class="toolbar-reset">
+
+        <i class="fas fa-rotate-left"></i>
+
+        Reset
+
+    </a>
+
+    {% endif %}
+
+</form>
+
+<!--==========================
+        RESULTS
+===========================-->
+
+<div class="results-info">
+
+    <p>
+
+        Showing
+
+        <strong>
+
+            {{ foods|length }}
+
+        </strong>
+
+        delicious meals
+
+    </p>
 
 </div>

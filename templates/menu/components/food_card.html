@@ -1,71 +1,135 @@
-<div class="food-card">
+{% load static %}
+
+<article class="food-card">
+
+    <!--=========================
+            IMAGE
+    ==========================-->
 
     <div class="food-image">
 
-        <a href="{{ food.get_absolute_url }}">
-            <img src="{{ food.image.url }}" alt="{{ food.name }}">
-        </a>
+        {% if food.image %}
 
-        {% if food.has_discount %}
-            <span class="food-badge">
-                {{ food.display_discount }}
-            </span>
+            <img src="{{ food.image.url }}"
+                 alt="{{ food.name }}">
+
+        {% else %}
+
+            <img src="{% static 'images/default-food.jpg' %}"
+                 alt="{{ food.name }}">
+
         {% endif %}
 
+        <!-- Featured Badge -->
+
+        {% if food.is_featured %}
+
+            <span class="food-badge">
+
+                🔥 Featured
+
+            </span>
+
+        {% endif %}
+
+        <!-- Wishlist -->
+
         <button class="wishlist-btn">
-            <i class="fa-regular fa-heart"></i>
+
+            <i class="far fa-heart"></i>
+
         </button>
 
     </div>
 
+    <!--=========================
+            CONTENT
+    ==========================-->
+
     <div class="food-content">
 
-        <span class="food-category">
-            {{ food.category.name }}
-        </span>
-
-        <h3>
-            <a href="{{ food.get_absolute_url }}">
-                {{ food.name }}
-            </a>
-        </h3>
+        <!-- Top Row -->
 
         <div class="food-meta">
 
-            <div class="food-rating">
-                ★★★★★
-                <span>({{ food.rating }})</span>
-            </div>
+            <span class="rating">
 
-            <span class="delivery">
-                <i class="fa-solid fa-clock"></i>
-                {{ food.preparation_time }} min
+                ⭐ 4.9
+
+            </span>
+
+            <span class="delivery-time">
+
+                <i class="fas fa-clock"></i>
+
+                20 min
+
             </span>
 
         </div>
 
+        <!-- Category -->
+
+        {% if food.category %}
+
+        <span class="category-tag">
+
+            {{ food.category.name }}
+
+        </span>
+
+        {% endif %}
+
+        <!-- Title -->
+
+        <h3>
+
+            <a href="{% url 'menu:food_detail' food.slug %}">
+
+                {{ food.name }}
+
+            </a>
+
+        </h3>
+
+        <!-- Description -->
+
+        <p>
+
+            {{ food.description|truncatewords:18 }}
+
+        </p>
+
+        <!-- Bottom -->
+
         <div class="food-footer">
 
-            <div class="price-group">
+            <div>
 
-                {% if food.has_discount %}
-                    <span class="old-price">
-                        KSh {{ food.original_price }}
-                    </span>
-                {% endif %}
+                <small>
 
-                <span class="price">
+                    Starting From
+
+                </small>
+
+                <h4>
+
                     KSh {{ food.price }}
-                </span>
+
+                </h4>
 
             </div>
 
-            <a href="{% url 'menu:add_to_cart' food.id %}" class="cart-btn">
-                <i class="fa-solid fa-cart-shopping"></i>
+            <a href="{% url 'cart:cart_add' food.id %}"
+
+               class="add-cart">
+
+                <i class="fas fa-plus"></i>
+
             </a>
 
         </div>
 
     </div>
 
-</div>
+</article>

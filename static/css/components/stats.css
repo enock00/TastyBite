@@ -1,0 +1,255 @@
+/*==================================================
+    STATISTICS
+====================================================*/
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:1.75rem;
+
+    margin:2rem 0;
+
+}
+
+/*==================================================
+    CARD
+====================================================*/
+
+.stat-card{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:1.25rem;
+
+    padding:1.75rem;
+
+    background:#FFFFFF;
+
+    border-radius:24px;
+
+    border:1px solid #EEF2F7;
+
+    box-shadow:0 12px 35px rgba(15,23,42,.05);
+
+    transition:.35s ease;
+
+    overflow:hidden;
+
+}
+
+.stat-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:5px;
+
+    height:100%;
+
+    background:#FF6B35;
+
+    transform:scaleY(0);
+
+    transition:.35s;
+
+    transform-origin:top;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 45px rgba(15,23,42,.10);
+
+}
+
+.stat-card:hover::before{
+
+    transform:scaleY(1);
+
+}
+
+/*==================================================
+    ICON
+====================================================*/
+
+.stat-icon{
+
+    width:72px;
+
+    height:72px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:20px;
+
+    color:#FFFFFF;
+
+    font-size:1.5rem;
+
+    flex-shrink:0;
+
+}
+
+/* Different colours */
+
+.stat-card:nth-child(1) .stat-icon{
+
+    background:linear-gradient(135deg,#10B981,#34D399);
+
+}
+
+.stat-card:nth-child(2) .stat-icon{
+
+    background:linear-gradient(135deg,#3B82F6,#60A5FA);
+
+}
+
+.stat-card:nth-child(3) .stat-icon{
+
+    background:linear-gradient(135deg,#F59E0B,#FBBF24);
+
+}
+
+.stat-card:nth-child(4) .stat-icon{
+
+    background:linear-gradient(135deg,#EF4444,#F87171);
+
+}
+
+/*==================================================
+    TEXT
+====================================================*/
+
+.stat-title{
+
+    margin:0;
+
+    color:#6B7280;
+
+    font-size:.9rem;
+
+    font-weight:500;
+
+}
+
+.stat-number{
+
+    margin:.45rem 0;
+
+    font-size:2rem;
+
+    font-weight:700;
+
+    color:#111827;
+
+    line-height:1;
+
+}
+
+.stat-growth{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:.4rem;
+
+    padding:.35rem .75rem;
+
+    border-radius:999px;
+
+    background:#ECFDF5;
+
+    color:#10B981;
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+}
+
+.stat-growth::before{
+
+    content:"▲";
+
+    font-size:.65rem;
+
+}
+
+/*==================================================
+    RESPONSIVE
+====================================================*/
+
+@media (max-width:1200px){
+
+    .stats-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+        gap:1rem;
+
+    }
+
+    .stat-card{
+
+        padding:1.5rem;
+
+    }
+
+    .stat-icon{
+
+        width:60px;
+
+        height:60px;
+
+        font-size:1.25rem;
+
+    }
+
+    .stat-number{
+
+        font-size:1.6rem;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .stat-card{
+
+        flex-direction:column;
+
+        text-align:center;
+
+    }
+
+}

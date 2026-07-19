@@ -1,0 +1,263 @@
+/*=====================================
+    BADGE
+======================================*/
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:.4rem;
+
+    padding:.45rem .9rem;
+
+    border-radius:999px;
+
+    font-size:.78rem;
+
+    font-weight:600;
+
+    line-height:1;
+
+    white-space:nowrap;
+
+}
+
+
+/*=====================================
+    PRIMARY
+======================================*/
+
+.badge-primary{
+
+    background:rgba(255,107,53,.12);
+
+    color:var(--primary);
+
+}
+
+
+/*=====================================
+    SUCCESS
+======================================*/
+
+.badge-success{
+
+    background:rgba(34,197,94,.12);
+
+    color:var(--success);
+
+}
+
+
+/*=====================================
+    WARNING
+======================================*/
+
+.badge-warning{
+
+    background:rgba(245,158,11,.12);
+
+    color:var(--warning);
+
+}
+
+
+/*=====================================
+    DANGER
+======================================*/
+
+.badge-danger{
+
+    background:rgba(239,68,68,.12);
+
+    color:var(--danger);
+
+}
+
+
+/*=====================================
+    INFO
+======================================*/
+
+.badge-info{
+
+    background:rgba(59,130,246,.12);
+
+    color:var(--info);
+
+}
+
+
+/*=====================================
+    DARK
+======================================*/
+
+.badge-dark{
+
+    background:#E2E8F0;
+
+    color:var(--text);
+
+}
+
+
+/*=====================================
+    FEATURED
+======================================*/
+
+.badge-featured{
+
+    background:linear-gradient(
+        135deg,
+        #FFC857,
+        #FFB627
+    );
+
+    color:#fff;
+
+}
+
+
+/*=====================================
+    NEW
+======================================*/
+
+.badge-new{
+
+    background:linear-gradient(
+        135deg,
+        #3B82F6,
+        #2563EB
+    );
+
+    color:#fff;
+
+}
+
+
+/*=====================================
+    OUTLINE
+======================================*/
+
+.badge-outline{
+
+    background:transparent;
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+}
+
+
+/*=====================================
+    ICON
+======================================*/
+
+.badge i{
+
+    font-size:.7rem;
+
+}
+
+/*=====================================
+    ORDER STATUS
+======================================*/
+
+.badge-pending{
+
+    background:#FEF3C7;
+
+    color:#B45309;
+
+}
+
+.badge-preparing{
+
+    background:#DBEAFE;
+
+    color:#1D4ED8;
+
+}
+
+.badge-ready{
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+}
+
+.badge-delivered{
+
+    background:#D1FAE5;
+
+    color:#047857;
+
+}
+
+.badge-cancelled{
+
+    background:#FEE2E2;
+
+    color:#B91C1C;
+
+}
+
+
+/*=====================================
+    FOOD STATUS
+======================================*/
+
+.badge-available{
+
+    background:#DCFCE7;
+
+    color:#15803D;
+
+}
+
+.badge-out{
+
+    background:#FEE2E2;
+
+    color:#DC2626;
+
+}
+
+.badge-low-stock{
+
+    background:#FEF3C7;
+
+    color:#D97706;
+
+}
+
+
+/*=====================================
+    CUSTOMER
+======================================*/
+
+.badge-vip{
+
+    background:linear-gradient(
+        135deg,
+        #7C3AED,
+        #9333EA
+    );
+
+    color:#fff;
+
+}
+
+.badge-returning{
+
+    background:#E0F2FE;
+
+    color:#0369A1;
+
+}

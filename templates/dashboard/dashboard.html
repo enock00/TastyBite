@@ -1,177 +1,502 @@
 {% extends "dashboard/dashboard_base.html" %}
 
+{% load static %}
+
 {% block title %}Dashboard{% endblock %}
 
-{% block page_title %}Dashboard{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
 
 {% block content %}
 
-<div class="dashboard-container">
+<!-- ==========================================
+                DASHBOARD HERO
+=========================================== -->
 
-    <!-- Statistics -->
+<section class="dashboard-hero">
 
-    <section class="stats-grid">
+    <div class="hero-left">
 
-        <div class="stat-card blue">
+        <span class="hero-tag">
+            Restaurant Management
+        </span>
 
-            <div>
-                <h4>Total Orders</h4>
-                <h2>{{ total_orders }}</h2>
-                <p>+12% this week</p>
-            </div>
+        <h1>
 
-            <i class="fas fa-shopping-bag"></i>
+            Welcome back,
 
-        </div>
+            {{ request.user.first_name|default:request.user.username }}
 
-        <div class="stat-card green">
+            👋
 
-            <div>
-                <h4>Revenue</h4>
-                <h2>KSh {{ revenue }}</h2>
-                <p>Monthly Income</p>
-            </div>
+        </h1>
 
-            <i class="fas fa-wallet"></i>
+        <p>
 
-        </div>
+            Monitor sales, orders, customers and menu performance
+            from one beautiful dashboard.
 
-        <div class="stat-card orange">
+        </p>
 
-            <div>
-                <h4>Customers</h4>
-                <h2>{{ customers }}</h2>
-                <p>Registered Users</p>
-            </div>
+        <div class="hero-buttons">
 
-            <i class="fas fa-users"></i>
+            <a href="{% url 'dashboard:add_food' %}" class="btn btn-primary">
 
-        </div>
+                <i class="fas fa-plus"></i>
 
-        <div class="stat-card purple">
+                Add Food
 
-            <div>
-                <h4>Food Items</h4>
-                <h2>{{ menu_items }}</h2>
-                <p>Available Today</p>
-            </div>
+            </a>
 
-            <i class="fas fa-utensils"></i>
+            <a href="{% url 'dashboard:orders' %}" class="btn btn-secondary">
 
-        </div>
+                <i class="fas fa-receipt"></i>
 
-    </section>
+                Orders
 
-    <!-- Charts -->
+            </a>
 
-    <section class="dashboard-grid">
+            <a href="#" class="btn btn-light">
 
-        <div class="card">
+                <i class="fas fa-chart-line"></i>
 
-            <h3>Sales Overview</h3>
+                Analytics
 
-            <canvas id="salesChart"></canvas>
+            </a>
 
         </div>
 
-        <div class="card">
+    </div>
 
-            <h3>Recent Orders</h3>
+    <div class="hero-right">
 
-            <table>
+        <div class="mini-stat">
 
-                <thead>
+            <h2>
 
-                <tr>
+                KSh {{ total_revenue|default:"0" }}
 
-                    <th>Customer</th>
+            </h2>
 
-                    <th>Status</th>
+            <span>
 
-                    <th>Total</th>
+                Total Revenue
 
-                </tr>
-
-                </thead>
-
-                <tbody>
-
-                {% for order in recent_orders %}
-
-                <tr>
-
-                    <td>{{ order.customer_name }}</td>
-
-                    <td>
-
-                        <span class="status {{ order.status|lower }}">
-                            {{ order.status }}
-                        </span>
-
-                    </td>
-
-                    <td>KSh {{ order.total_price }}</td>
-
-                </tr>
-
-                {% empty %}
-
-                <tr>
-
-                    <td colspan="3">
-
-                        No recent orders.
-
-                    </td>
-
-                </tr>
-
-                {% endfor %}
-
-                </tbody>
-
-            </table>
+            </span>
 
         </div>
 
-    </section>
+        <div class="mini-stat">
 
-    <section class="card">
+            <h2>
 
-    <h3>🔥 Best Selling Foods</h3>
+                {{ total_orders }}
 
-    <div class="food-grid">
+            </h2>
 
-        {% for food in best_sellers %}
+            <span>
 
-        <div class="food-card">
+                Orders
 
-            {% if food.image %}
-                <img src="{{ food.image.url }}" alt="{{ food.name }}">
-            {% endif %}
-
-            <div class="food-content">
-
-                <h4>{{ food.name }}</h4>
-
-                <p>{{ food.total_sold|default:0 }} Orders</p>
-
-                <h3>KSh {{ food.price }}</h3>
-
-            </div>
+            </span>
 
         </div>
 
-        {% empty %}
+        <div class="mini-stat">
 
-        <p>No sales yet.</p>
+            <h2>
 
-        {% endfor %}
+                {{ total_customers }}
+
+            </h2>
+
+            <span>
+
+                Customers
+
+            </span>
+
+        </div>
+
+        <div class="mini-stat">
+
+            <h2>
+
+                {{ total_foods }}
+
+            </h2>
+
+            <span>
+
+                Menu Items
+
+            </span>
+
+        </div>
 
     </div>
 
 </section>
 
-</div>
+<!-- ==========================================
+                KPI CARDS
+=========================================== -->
+
+<section class="stats-grid">
+
+    <div class="stat-card revenue">
+
+        <i class="fas fa-sack-dollar"></i>
+
+        <div>
+
+            <small>Revenue</small>
+
+            <h2>KSh {{ total_revenue }}</h2>
+
+            <span>▲ 12% this month</span>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card orders">
+
+        <i class="fas fa-cart-shopping"></i>
+
+        <div>
+
+            <small>Orders</small>
+
+            <h2>{{ total_orders }}</h2>
+
+            <span>{{ today_orders }} today</span>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card customers">
+
+        <i class="fas fa-users"></i>
+
+        <div>
+
+            <small>Customers</small>
+
+            <h2>{{ total_customers }}</h2>
+
+            <span>Growing daily</span>
+
+        </div>
+
+    </div>
+
+    <div class="stat-card menu">
+
+        <i class="fas fa-bowl-food"></i>
+
+        <div>
+
+            <small>Menu</small>
+
+            <h2>{{ total_foods }}</h2>
+
+            <span>{{ featured_foods }} Featured</span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+        REVENUE + SUMMARY
+=========================================== -->
+
+<section class="dashboard-row">
+
+    <div class="dashboard-card chart-card">
+
+        <div class="card-header">
+
+            <h3>
+
+                Revenue Overview
+
+            </h3>
+
+        </div>
+
+        <canvas id="revenueChart"></canvas>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3>
+
+                Today's Summary
+
+            </h3>
+
+        </div>
+
+        <div class="summary-list">
+
+            <div>
+
+                <span>Today's Orders</span>
+
+                <strong>{{ today_orders }}</strong>
+
+            </div>
+
+            <div>
+
+                <span>Customers</span>
+
+                <strong>{{ total_customers }}</strong>
+
+            </div>
+
+            <div>
+
+                <span>Revenue</span>
+
+                <strong>KSh {{ total_revenue }}</strong>
+
+            </div>
+
+            <div>
+
+                <span>Foods</span>
+
+                <strong>{{ total_foods }}</strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+        ORDERS + ACTIVITY
+=========================================== -->
+
+<section class="dashboard-row">
+
+    <div class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3>
+
+                Recent Orders
+
+            </h3>
+
+        </div>
+
+        <div class="recent-orders">
+
+            {% for order in recent_orders %}
+
+            <div class="order-item">
+
+                <div>
+
+                    <strong>
+
+                        {{ order.customer }}
+
+                    </strong>
+
+                    <small>
+
+                        {{ order.created_at|date:"d M Y" }}
+
+                    </small>
+
+                </div>
+
+                <span class="badge">
+
+                    {{ order.status }}
+
+                </span>
+
+            </div>
+
+            {% empty %}
+
+            <p>No recent orders.</p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3>
+
+                Activity
+
+            </h3>
+
+        </div>
+
+        <div class="activity-list">
+
+            <div class="activity">
+
+                <i class="fas fa-circle"></i>
+
+                New order received
+
+            </div>
+
+            <div class="activity">
+
+                <i class="fas fa-circle"></i>
+
+                Customer registered
+
+            </div>
+
+            <div class="activity">
+
+                <i class="fas fa-circle"></i>
+
+                Menu updated
+
+            </div>
+
+            <div class="activity">
+
+                <i class="fas fa-circle"></i>
+
+                Payment received
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================
+        FOODS + QUICK ACTIONS
+=========================================== -->
+
+<section class="dashboard-row">
+
+    <div class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3>
+
+                Popular Foods
+
+            </h3>
+
+        </div>
+
+        <div class="food-grid">
+
+            {% for food in popular_foods %}
+
+            <div class="food-item">
+
+                {% if food.image %}
+
+                <img src="{{ food.image.url }}" alt="{{ food.name }}">
+
+                {% endif %}
+
+                <div>
+
+                    <h4>{{ food.name }}</h4>
+
+                    <small>{{ food.category }}</small>
+
+                    <strong>KSh {{ food.price }}</strong>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+            <p>No foods available.</p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <div class="dashboard-card">
+
+        <div class="card-header">
+
+            <h3>
+
+                Quick Actions
+
+            </h3>
+
+        </div>
+
+        <div class="quick-grid">
+
+            <a href="{% url 'dashboard:add_food' %}" class="quick-card">
+
+                <i class="fas fa-plus"></i>
+
+                Add Food
+
+            </a>
+
+            <a href="{% url 'dashboard:orders' %}" class="quick-card">
+
+                <i class="fas fa-receipt"></i>
+
+                Orders
+
+            </a>
+
+            <a href="{% url 'dashboard:menu' %}" class="quick-card">
+
+                <i class="fas fa-utensils"></i>
+
+                Menu
+
+            </a>
+
+            <a href="#" class="quick-card">
+
+                <i class="fas fa-chart-pie"></i>
+
+                Reports
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
 
 {% endblock %}

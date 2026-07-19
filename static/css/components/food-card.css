@@ -1,0 +1,252 @@
+/*==================================================
+    TASTYBITE FOOD CARD
+    PART 1
+====================================================*/
+
+/*==========================
+    CARD
+===========================*/
+
+.food-card{
+
+    position:relative;
+
+    background:#fff;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    border:1px solid #EEF2F7;
+
+    box-shadow:
+
+        0 15px 40px rgba(15,23,42,.06);
+
+    transition:.4s;
+
+    display:flex;
+
+    flex-direction:column;
+
+    height:100%;
+
+}
+
+.food-card:hover{
+
+    transform:translateY(-12px);
+
+    box-shadow:
+
+        0 30px 60px rgba(15,23,42,.12);
+
+}
+
+/*==========================
+    IMAGE
+===========================*/
+
+.food-image{
+
+    position:relative;
+
+    overflow:hidden;
+
+    height:260px;
+
+    background:#F8FAFC;
+
+}
+
+.food-image img{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    transition:.6s;
+
+}
+
+.food-card:hover .food-image img{
+
+    transform:scale(1.08);
+
+}
+
+/*==========================
+    BADGE
+===========================*/
+
+.food-badge{
+
+    position:absolute;
+
+    top:18px;
+
+    left:18px;
+
+    background:linear-gradient(
+        135deg,
+        #FF6B35,
+        #FF9A57
+    );
+
+    color:#fff;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    font-size:.75rem;
+
+    font-weight:600;
+
+    box-shadow:
+
+        0 10px 20px rgba(255,107,53,.25);
+
+}
+
+/*==========================
+    WISHLIST
+===========================*/
+
+.wishlist-btn{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.92);
+
+    backdrop-filter:blur(12px);
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:.35s;
+
+}
+
+.wishlist-btn i{
+
+    color:#64748B;
+
+    font-size:1.1rem;
+
+}
+
+.wishlist-btn:hover{
+
+    background:#FF6B35;
+
+    transform:rotate(10deg);
+
+}
+
+.wishlist-btn:hover i{
+
+    color:#fff;
+
+}
+
+/*==========================
+    CONTENT
+===========================*/
+
+.food-content{
+
+    padding:24px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    flex:1;
+
+}
+
+/*==========================
+    META
+===========================*/
+
+.food-meta{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.rating{
+
+    color:#F59E0B;
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+}
+
+.delivery-time{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    color:#64748B;
+
+    font-size:.9rem;
+
+}
+
+/*==========================
+    CATEGORY
+===========================*/
+
+.category-tag{
+
+    display:inline-flex;
+
+    width:max-content;
+
+    padding:8px 16px;
+
+    border-radius:40px;
+
+    background:#FFF3EC;
+
+    color:#FF6B35;
+
+    font-size:.78rem;
+
+    font-weight:600;
+
+    margin-bottom:18px;
+
+}

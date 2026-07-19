@@ -1,152 +1,235 @@
-{% extends "dashboard/dashboard_base.html" %}
+{% extends "components/dashboard_base.html" %}
+{% load static %}
 
-{% block title %}Orders{% endblock %}
+{% block title %}
+Orders
+{% endblock %}
+
+{% block page_title %}
+Orders
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/pages/orders.css' %}">
+{% endblock %}
+
+{% block hero %}
+
+<section class="page-hero">
+
+    <div>
+
+        <span class="page-tag">
+            🧾 Restaurant Orders
+        </span>
+
+        <h1>Orders Management</h1>
+
+        <p>
+
+            Track and manage customer orders in real time.
+
+        </p>
+
+    </div>
+
+</section>
+
+{% endblock %}
 
 {% block content %}
 
-<div class="dashboard-nav">
+<!-- Statistics -->
 
-    <a href="{% url 'dashboard:home' %}" class="nav-link">
-        <i class="fas fa-arrow-left"></i>
-        Dashboard
-    </a>
+<section class="stats-grid">
 
-</div>
+    <div class="stat-card">
 
-<section class="dashboard">
+        <div class="stat-icon">
 
-<div class="container">
+            <i class="fas fa-receipt"></i>
 
-<h1>Orders Management</h1>
+        </div>
 
-<form method="GET" class="search-form">
+        <div>
 
-    <input
-        type="text"
-        name="search"
-        value="{{ search }}"
-        placeholder="Search customer or phone">
+            <p class="stat-title">Total Orders</p>
 
-    <select name="status">
+            <h2 class="stat-number">{{ orders.count }}</h2>
 
-        <option value="">All Orders</option>
+        </div>
 
-        <option value="pending"
-            {% if request.GET.status == "pending" %}selected{% endif %}>
-            Pending
-        </option>
+    </div>
 
-        <option value="confirmed"
-            {% if request.GET.status == "confirmed" %}selected{% endif %}>
-            Confirmed
-        </option>
+    <div class="stat-card">
 
-        <option value="preparing"
-            {% if request.GET.status == "preparing" %}selected{% endif %}>
-            Preparing
-        </option>
+        <div class="stat-icon">
 
-        <option value="ready"
-            {% if request.GET.status == "ready" %}selected{% endif %}>
-            Ready
-        </option>
+            <i class="fas fa-clock"></i>
 
-        <option value="delivered"
-            {% if request.GET.status == "delivered" %}selected{% endif %}>
-            Delivered
-        </option>
+        </div>
 
-        <option value="cancelled"
-            {% if request.GET.status == "cancelled" %}selected{% endif %}>
-            Cancelled
-        </option>
+        <div>
 
-    </select>
+            <p class="stat-title">Pending</p>
 
-    <button type="submit">
-        <i class="fas fa-search"></i>
-        Search
-    </button>
+            <h2 class="stat-number">{{ pending_orders }}</h2>
 
-</form>
+        </div>
 
-<table class="orders-table">
+    </div>
 
-<thead>
+    <div class="stat-card">
 
-<tr>
+        <div class="stat-icon">
 
-<th>#</th>
-<th>Customer</th>
-<th>Phone</th>
-<th>Status</th>
-<th>Total</th>
-<th>Date</th>
-<th>Action</th>
+            <i class="fas fa-utensils"></i>
 
-</tr>
+        </div>
 
-</thead>
+        <div>
 
-<tbody>
+            <p class="stat-title">Preparing</p>
 
-{% for order in orders %}
+            <h2 class="stat-number">{{ preparing_orders }}</h2>
 
-<tr>
+        </div>
 
-<td>{{ order.id }}</td>
+    </div>
 
-<td>{{ order.customer_name }}</td>
+    <div class="stat-card">
 
-<td>{{ order.phone }}</td>
+        <div class="stat-icon">
 
-<td>
+            <i class="fas fa-circle-check"></i>
 
-<span class="status {{ order.status }}">
+        </div>
 
-{{ order.status }}
+        <div>
 
-</span>
+            <p class="stat-title">Completed</p>
 
-</td>
+            <h2 class="stat-number">{{ completed_orders }}</h2>
 
-<td>KSh {{ order.total_price }}</td>
+        </div>
 
-<td>{{ order.created_at|date:"d M Y" }}</td>
-
-<td>
-
-<a href="{% url 'dashboard:order_detail' order.id %}"
-class="view-btn">
-
-View
-
-</a>
-
-</td>
-
-</tr>
-
-{% empty %}
-
-<tr>
-
-<td colspan="7">
-
-No orders found.
-
-</td>
-
-</tr>
-
-{% endfor %}
-
-</tbody>
-
-</table>
-
-</div>
+    </div>
 
 </section>
+
+<!-- Search -->
+
+<section class="menu-toolbar">
+
+    <form method="GET">
+
+        <div class="search-box">
+
+            <i class="fas fa-search"></i>
+
+            <input
+                type="search"
+                name="q"
+                value="{{ request.GET.q }}"
+                placeholder="Search customer...">
+
+        </div>
+
+    </form>
+
+</section>
+
+<!-- Orders -->
+
+<div class="dashboard-panel">
+
+    <div class="panel-header">
+
+        <h3>Recent Orders</h3>
+
+    </div>
+
+    <div class="table-wrapper">
+
+        <table class="dashboard-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>#</th>
+
+                    <th>Customer</th>
+
+                    <th>Total</th>
+
+                    <th>Status</th>
+
+                    <th>Date</th>
+
+                    <th></th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for order in orders %}
+
+                <tr>
+
+                    <td>#{{ order.id }}</td>
+
+                    <td>{{ order.customer }}</td>
+
+                    <td>KSh {{ order.total }}</td>
+
+                    <td>
+
+                        <span class="badge badge-success">
+
+                            {{ order.status }}
+
+                        </span>
+
+                    </td>
+
+                    <td>{{ order.created_at|date:"d M Y" }}</td>
+
+                    <td>
+
+                        <a href="#"
+                           class="btn btn-sm btn-outline">
+
+                            View
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            {% empty %}
+
+                <tr>
+
+                    <td colspan="6">
+
+                        No orders available.
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
 
 {% endblock %}

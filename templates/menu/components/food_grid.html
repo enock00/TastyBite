@@ -1,46 +1,144 @@
-{% for category in categories %}
+<div class="food-grid-section">
 
-<section class="menu-section">
+    <!--==================================
+                RESULTS HEADER
+    ===================================-->
 
-    <div class="menu-section-header">
+    <div class="food-grid-header">
 
         <div>
 
-            <h2 class="menu-section-title">
-                {{ category.name }}
+            <h2>
+
+                {% if category %}
+
+                    {{ category.name }}
+
+                {% else %}
+
+                    Our Menu
+
+                {% endif %}
+
             </h2>
 
-            <p class="menu-section-subtitle">
-                Freshly prepared by our chefs
+            <p>
+
+                {{ foods|length }} delicious meal{{ foods|pluralize }}
+                available
+
             </p>
 
         </div>
 
-        <a href="#" class="menu-section-link">
-            View All
-            <i class="fas fa-arrow-right"></i>
-        </a>
-
     </div>
 
-    <div class="food-row">
+    <!--==================================
+                FOOD GRID
+    ===================================-->
 
-        {% for food in category.food_items.all %}
+    {% if foods %}
 
-            {% if food.is_available %}
-                {% include "menu/components/food_card.html" %}
-            {% endif %}
+    <div class="food-grid">
 
-        {% empty %}
+        {% for food in foods %}
 
-            <p class="empty-category">
-                No meals available in this category.
-            </p>
+            {% include "menu/components/food_card.html" %}
 
         {% endfor %}
 
     </div>
 
-</section>
+    {% else %}
 
-{% endfor %}
+    <div class="empty-menu">
+
+        <div class="empty-icon">
+
+            🍽
+
+        </div>
+
+        <h3>
+
+            No Meals Found
+
+        </h3>
+
+        <p>
+
+            We couldn't find any meals matching your search.
+            Try another keyword or browse a different category.
+
+        </p>
+
+        <a href="{% url 'menu:menu' %}"
+
+           class="btn-primary">
+
+            View All Meals
+
+        </a>
+
+    </div>
+
+    {% endif %}
+
+    <!--==================================
+                PAGINATION
+    ===================================-->
+
+    {% if is_paginated %}
+
+    <div class="pagination-wrapper">
+
+        {% if page_obj.has_previous %}
+
+            <a href="?page={{ page_obj.previous_page_number }}"
+               class="page-btn">
+
+                <i class="fas fa-chevron-left"></i>
+
+            </a>
+
+        {% endif %}
+
+        {% for num in paginator.page_range %}
+
+            {% if page_obj.number == num %}
+
+                <span class="page-btn active">
+
+                    {{ num }}
+
+                </span>
+
+            {% else %}
+
+                <a href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.sort %}&sort={{ request.GET.sort }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}">
+
+                    {{ num }}
+
+                </a>
+
+            {% endif %}
+
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+
+            <a href="?page={{ page_obj.next_page_number }}"
+
+               class="page-btn">
+
+                <i class="fas fa-chevron-right"></i>
+
+            </a>
+
+        {% endif %}
+
+    </div>
+
+    {% endif %}
+
+</div>

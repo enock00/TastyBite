@@ -1,183 +1,119 @@
 {% load static %}
 
-<section class="popular-dishes">
+<section class="popular-dishes section bg-light">
 
     <div class="container">
 
-        <!-- ===================== -->
-        <!-- SECTION HEADER -->
-        <!-- ===================== -->
+        <!--=================================
+                    SECTION HEADER
+        ==================================-->
 
         <div class="section-header">
 
             <span class="section-tag">
-                🍽 Popular Menu
+
+                🍽 Customer Favorites
+
             </span>
 
             <h2 class="section-title">
-                Customer Favorites
+
+                Our Most <span>Popular Dishes</span>
+
             </h2>
 
             <p class="section-description">
-                Explore our most loved meals, freshly prepared using premium
-                ingredients and delivered hot to your doorstep.
+
+                Every meal is freshly prepared by our chefs using premium
+                ingredients. Discover the dishes our customers love the most.
+
             </p>
 
         </div>
 
-        <!-- ===================== -->
-        <!-- FOOD GRID -->
-        <!-- ===================== -->
+        <!--=================================
+                CATEGORY FILTERS
+        ==================================-->
 
-        <div class="food-grid">
+        <div class="popular-filter">
 
-            {% for food in featured_foods %}
+            <button class="active">
 
-            <article class="food-card">
+                All
 
-                <!-- Badge -->
+            </button>
 
-                {% if food.is_featured %}
-                <span class="food-badge">
-                    🔥 Best Seller
-                </span>
-                {% endif %}
+            {% for category in categories %}
 
-                <!-- Wishlist -->
+                <button>
 
-                <button class="wishlist-btn">
-
-                    <i class="fa-regular fa-heart"></i>
+                    {{ category.name }}
 
                 </button>
-
-                <!-- Image -->
-
-                <div class="food-image">
-
-                    <a href="{% url 'menu:food_detail' food.slug %}">
-
-                        <img src="{{ food.image.url }}"
-                             alt="{{ food.name }}">
-
-                    </a>
-
-                </div>
-
-                <!-- Content -->
-
-                <div class="food-content">
-
-                    <span class="food-category">
-
-                        {{ food.category.name }}
-
-                    </span>
-
-                    <h3>
-
-                        <a href="{% url 'menu:food_detail' food.slug %}">
-
-                            {{ food.name }}
-
-                        </a>
-
-                    </h3>
-
-                    <p>
-
-                        {{ food.description|truncatewords:15 }}
-
-                    </p>
-
-                    <!-- Rating -->
-
-                    <div class="food-rating">
-
-                        <div class="stars">
-
-                            ★★★★★
-
-                        </div>
-
-                        <span>
-
-                            ({{ food.review_count|default:"24" }})
-
-                        </span>
-
-                    </div>
-
-                    <!-- Footer -->
-
-                    <div class="food-footer">
-
-                        <div class="price">
-
-                            KSh {{ food.price }}
-
-                        </div>
-
-                        <div class="food-actions">
-
-                            <a href="{% url 'menu:food_detail' food.slug %}"
-
-                               class="quick-view">
-
-                                <i class="fa-regular fa-eye"></i>
-
-                            </a>
-
-                            <a href="{% url 'menu:add_to_cart' food.id %}" class="add-cart">
-                                <i class="fa-solid fa-cart-plus"></i>
-                                Add
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </article>
-
-            {% empty %}
-
-            <!-- Fallback Cards -->
-
-            <div class="empty-foods">
-
-                <img src="{% static 'images/empty-menu.svg' %}" alt="">
-
-                <h3>No Featured Meals Yet</h3>
-
-                <p>
-                    Check back soon for our chef's favourites.
-                </p>
-
-            </div>
 
             {% endfor %}
 
         </div>
 
-        <!-- ===================== -->
-        <!-- BUTTON -->
-        <!-- ===================== -->
+        <!--=================================
+                    FOOD GRID
+        ==================================-->
+
+        <div class="food-grid">
+
+            {% for food in featured_foods %}
+
+                {% include "menu/components/food_card.html" %}
+
+            {% empty %}
+
+                <div class="empty-foods">
+
+                    <img src="{% static 'images/empty-menu.svg' %}"
+                         alt="No food available">
+
+                    <h3>
+
+                        No Featured Meals Yet
+
+                    </h3>
+
+                    <p>
+
+                        We're preparing something delicious.
+                        Please check back soon.
+
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        <!--=================================
+                VIEW MENU BUTTON
+        ==================================-->
 
         <div class="section-footer">
 
-            <a href="{% url 'menu:menu' %}"
+    <p>
 
-               class="view-menu-btn">
+        Looking for something else?
 
-                View Full Menu
+    </p>
 
-                <i class="fa-solid fa-arrow-right"></i>
+    <a href="{% url 'menu:menu' %}"
 
-            </a>
+       class="view-menu-btn">
 
-        </div>
+        Browse Complete Menu
+
+        <i class="fas fa-arrow-right"></i>
+
+    </a>
+
+</div>
 
     </div>
 

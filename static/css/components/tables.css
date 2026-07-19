@@ -1,0 +1,63 @@
+/*=====================================
+    TABLES
+=====================================*/
+
+.table-wrapper{
+
+    background:#fff;
+
+    border-radius:var(--radius-lg);
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow-sm);
+
+}
+
+.table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.table thead{
+
+    background:var(--surface-light);
+
+}
+
+.table th{
+
+    padding:1rem;
+
+    text-align:left;
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+.table td{
+
+    padding:1rem;
+
+    border-top:1px solid var(--border);
+
+}
+
+.table tbody tr{
+
+    transition:.25s;
+
+}
+
+.table tbody tr:hover{
+
+    background:#FAFAFA;
+
+}

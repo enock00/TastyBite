@@ -1,0 +1,27 @@
+/*=====================================
+    MENU PAGE
+======================================*/
+
+.filter-bar{
+
+    margin-bottom:2rem;
+
+}
+
+.food-card-footer{
+
+    justify-content:space-between;
+
+}
+
+.food-card-footer .btn{
+
+    flex:1;
+
+}
+
+.food-grid{
+
+    margin-top:2rem;
+
+}

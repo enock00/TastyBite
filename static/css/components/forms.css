@@ -1,0 +1,55 @@
+/*=====================================
+    FORMS
+=====================================*/
+
+.form-group{
+
+    margin-bottom:1.5rem;
+
+}
+
+.form-label{
+
+    display:block;
+
+    margin-bottom:.55rem;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+.form-control{
+
+    width:100%;
+
+    padding:1rem;
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-md);
+
+    background:#fff;
+
+    transition:var(--transition);
+
+}
+
+.form-control:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(255,107,53,.15);
+
+}
+
+textarea.form-control{
+
+    resize:vertical;
+
+    min-height:140px;
+
+}

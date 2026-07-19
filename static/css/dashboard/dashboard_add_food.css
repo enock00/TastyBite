@@ -1,0 +1,29 @@
+/*=====================================
+    ADD FOOD PAGE
+======================================*/
+
+.card{
+
+    max-width:900px;
+
+    margin:0 auto;
+
+}
+
+.form-actions{
+
+    margin-top:2rem;
+
+}
+
+input[type="file"]{
+
+    padding:1rem;
+
+}
+
+textarea{
+
+    min-height:180px;
+
+}

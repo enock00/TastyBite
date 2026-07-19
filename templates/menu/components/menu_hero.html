@@ -1,0 +1,158 @@
+{% load static %}
+
+<section class="menu-hero">
+
+    <div class="container hero-container">
+
+        <!-- ========================= -->
+        <!-- LEFT -->
+        <!-- ========================= -->
+
+        <div class="hero-content">
+
+            <div class="breadcrumb">
+
+                <a href="{% url 'core:home' %}">
+
+                    Home
+
+                </a>
+
+                <i class="fas fa-chevron-right"></i>
+
+                <span>
+
+                    {% if category %}
+                        {{ category.name }}
+                    {% else %}
+                        Menu
+                    {% endif %}
+
+                </span>
+
+            </div>
+
+            <span class="hero-tag">
+
+                🍽 Fresh • Hot • Fast Delivery
+
+            </span>
+
+            <h1>
+
+                {% if category %}
+
+                    {{ category.name }}
+
+                {% else %}
+
+                    Discover Delicious Meals
+                    Crafted With Love
+
+                {% endif %}
+
+            </h1>
+
+            <p>
+
+                {% if category %}
+
+                    {{ category.description|default:"Discover delicious meals carefully prepared by our chefs using premium ingredients." }}
+
+                {% else %}
+
+                    Browse hundreds of freshly prepared meals, refreshing drinks
+                    and irresistible desserts. Order online and enjoy restaurant
+                    quality food delivered straight to your doorstep.
+
+                {% endif %}
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="#menu-items" class="btn-primary">
+
+                    Browse Meals
+
+                </a>
+
+                <a href="{% url 'cart:cart_detail' %}" class="btn-secondary">
+
+                    View Cart
+
+                </a>
+
+            </div>
+
+            <div class="hero-stats">
+
+                <div>
+
+                    <h3>{{ foods|length }}+</h3>
+
+                    <span>Meals</span>
+
+                </div>
+
+                <div>
+
+                    <h3>{{ categories|length }}</h3>
+
+                    <span>Categories</span>
+
+                </div>
+
+                <div>
+
+                    <h3>4.9★</h3>
+
+                    <span>Ratings</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- RIGHT -->
+        <!-- ========================= -->
+
+        <div class="hero-image">
+
+            <img src="{% static 'images/menu-hero.png' %}" alt="Delicious Food">
+
+            <div class="floating-card card-one">
+
+                <i class="fas fa-fire"></i>
+
+                <div>
+
+                    <strong>Best Seller</strong>
+
+                    <span>Fresh Every Day</span>
+
+                </div>
+
+            </div>
+
+            <div class="floating-card card-two">
+
+                <i class="fas fa-motorcycle"></i>
+
+                <div>
+
+                    <strong>25 Minutes</strong>
+
+                    <span>Average Delivery</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
